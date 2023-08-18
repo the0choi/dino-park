@@ -1,3 +1,6 @@
+import os
+import uuid
+import boto3
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -34,3 +37,16 @@ def fields_detail(request, field_id):
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
     return render(request, 'dinos/detail.html', {'dino': dino})
+
+def signup(request):
+  error_message = ''
+  form = UserCreationForm(request.POST)
+  if request.method == 'POST':
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('index')
+    else:
+      error_message = 'Invalid sign up - try again'
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)

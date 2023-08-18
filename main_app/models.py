@@ -24,4 +24,5 @@ class Dino(models.Model):
 
     def get_absolute_url(self):
         return reverse('dinos_detail', kwargs={'dino_id': self.id})
+    
 
