@@ -4,30 +4,26 @@
 <h1>Log In</h1>
 
 <div class="custom--main">
-
     <div class="wrapper">
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username"
-                required>
+                <input type="text" name="username" placeholder="Username" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password"
-                required>
+                <input type="password" name="password" placeholder="Password" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
+            <input type="hidden" name="next" value="{{ next }}">
             <button type="submit" class="custom--btn">Login</button>
             <div class="register-link">
                 <p>Don't have an account? 
                     <a class="custom--a" href="{% url 'signup' %}">Sign up</a>
                 </p>
             </div>
-            <div clas></div>
-        </div>
-    </form>
+        </form>
 </div>
 </div>
 {% endblock %}

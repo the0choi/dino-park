@@ -39,13 +39,14 @@ def dinos_detail(request, dino_id):
 
 def signup(request):
   error_message = ''
-  form = UserCreationForm(request.POST)
   if request.method == 'POST':
+    form = UserCreationForm(request.POST)
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('index')
+      return redirect('home')
     else:
       error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
