@@ -7,4 +7,5 @@ urlpatterns = [
     path('fields/', views.fields_index, name='fields_index'),
     path('fields/<int:field_id>/', views.fields_detail, name='fields_detail'),
     path('dinos/<int:dino_id>/', views.dinos_detail, name='dinos_detail'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
