@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tailwind',
+    'theme',
     'main_app',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -121,6 +123,12 @@ STATIC_URL = 'static/'
 LOGIN_REDIRECT_URL = '/fields/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+TAILWIND_APP_NAME = 'theme'
+
+# INTERNAL_IPS = [
+#     "127.0.0.1",
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
