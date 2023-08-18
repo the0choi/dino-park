@@ -1,7 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Home</h1>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime quam animi tempore ducimus porro similique eligendi perspiciatis illum earum itaque provident voluptatem totam dolores molestias, tempora iusto, quae ratione sequi?</p>
+<style>
+    .blue-square {
+      background-color: blue;
+      width: 150px;
+      height: 150px;
+      border-radius: 10%;
+      margin: auto;
+    }
+</style>
+
+<div class="container mt-40">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <h1>Project 3</h1>
+        <p>This is content in the first column.</p>
+      </div>
+      <div class="col-4">
+        <div class="blue-square"></div>
+      </div>
+    </div>
+</div>
+
 
 {% endblock %}

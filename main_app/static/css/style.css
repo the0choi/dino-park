@@ -88,9 +88,9 @@ nav {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
-  }
+}
   
-  .custom--a:before{
+.custom--a:before{
     content: '';
     background: #54b3d6;
     display: block;
@@ -100,15 +100,15 @@ nav {
     width: 0;
     height: 3px;
     transition: all 0.3s ease-in-out;
-  }
-  
-  .custom--a:hover {
-   background-position: 0;
-  }
-  
-  .custom--a:hover::before{
+}
+
+.custom--a:hover {
+    background-position: 0;
+}
+
+.custom--a:hover::before{
     width: 100%;
-  }
+}
   
  .custom--main {
     display: flex;

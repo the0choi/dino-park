@@ -32,6 +32,7 @@ def fields_detail(request, field_id):
     dinos = field.dinos.all().values_list('id')
     return render(request, 'fields/detail.html', {'field': field, 'dinos': dinos})
 
+
 @login_required
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
