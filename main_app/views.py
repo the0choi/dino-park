@@ -1,6 +1,7 @@
 import os
 import uuid
 import boto3
+import datetime
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -23,14 +24,16 @@ def about(request):
 @login_required
 def fields_index(request):
     fields = Field.objects.filter(user=request.user)
-    return render(request, 'fields/index.html', {'fields': fields})
+    current_date = datetime.datetime.now()
+    return render(request, 'fields/index.html', {'fields': fields, 'current_date': current_date})
 
 
 @login_required
 def fields_detail(request, field_id):
     field = Field.objects.get(id=field_id)
     dinos = field.dinos.all().values_list('id')
-    return render(request, 'fields/detail.html', {'field': field, 'dinos': dinos})
+    current_date = datetime.datetime.now().date()
+    return render(request, 'fields/detail.html', {'field': field, 'dinos': dinos, 'current_date': current_date})
 
 
 @login_required
