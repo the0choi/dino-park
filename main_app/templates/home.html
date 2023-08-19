@@ -1,27 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<style>
-    .blue-square {
-      background-color: blue;
-      width: 150px;
-      height: 150px;
-      border-radius: 10%;
-      margin: auto;
-    }
-</style>
-
-<div class="container mt-40">
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <h1>Project 3</h1>
-        <p>This is content in the first column.</p>
-      </div>
-      <div class="col-4">
-        <div class="blue-square"></div>
-      </div>
+<div class="w-2/3 mx-auto">
+    <div class="mt-40 flex justify-center items-center px-10">
+        <div class="mx-auto">
+            <p class="font-semibold">A productivity timer app.</p>
+            <h1 class="text-8xl my-5">DINO<br>PARK</h1>
+            <p>Stay focused on the things that matter.</p>
+            <p>Start your own dino park!</p>
+            <button class="flex h-12 items-center justify-center px-4 my-5 rounded-full bg-red-600">GET STARTED</button>
+            <div class="flex items-center justify-center">
+                <div class="flex">
+                    <i class='bx bxs-user'></i>
+                    <div class="">Improve productivity</div>
+                </div>
+                
+                <div class="flex">
+                    <i class='bx bxs-user'></i>
+                <div class="">Incentivise focus</div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="bg-red-500 w-96 h-96 rounded-md mx-auto flex items-center justify-center">
+            <img src="https://media.giphy.com/media/8VOjA6wWeCaic/giphy.gif">
+        </div>
     </div>
 </div>
 
+<footer></footer>
 
 {% endblock %}
