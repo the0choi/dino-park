@@ -1,29 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="w-2/3 mx-auto">
-    <div class="mt-40 flex justify-center items-center px-10">
-        <div class="mx-auto">
-            <p class="font-semibold">A productivity timer app.</p>
-            <h1 class="text-8xl my-5">DINO<br>PARK</h1>
-            <p>Stay focused on the things that matter.</p>
-            <p>Start your own dino park!</p>
-            <button class="flex h-12 items-center justify-center px-4 my-5 rounded-full bg-red-600">GET STARTED</button>
-            <div class="flex items-center justify-center">
-                <div class="flex">
-                    <i class='bx bxs-user'></i>
-                    <div class="">Improve productivity</div>
-                </div>
+
+<!-- .wrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+ } -->
+
+<div class="clouds-overlay"></div>
+<div class="w-3/5 mx-auto flex items-center justify-center h-screen -mt-20">
+    <div class="w-200 border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-md shadow-xl p-10">
+        <div class="flex justify-center items-center text-black">
+            <div class="mr-28">
+                <p class="font-bold text-xs">
+                    <i class='bx bx-cube-alt'></i>
+                    A Jurassic-style productivity timer.
+                </p>
+                <h1 class="text-8xl mt-10 text-white">DINO<br>PARK</h1>
+                <p>Stay focused on the things that matter.</p>
+                <p>Hatch your own pre-historic park!</p>
+                    <button class="flex h-12 items-center justify-center px-5 my-10 rounded-full bg-red-600 font-bold text-white">
+                        <a href="{% url 'signup' %}">GET STARTED</a>
+                    </button>
                 
-                <div class="flex">
-                    <i class='bx bxs-user'></i>
-                <div class="">Incentivise focus</div>
+                <div class="flex items-center space-x-5">
+                    <div class="flex items-center justify-center space-x-3">
+                        <i class='bx bxs-meteor text-3xl'></i>
+                        <div class="">Improve<br>productivity</div>
+                    </div>
+                    <div class="flex items-center justify-center space-x-3">
+                        <i class='bx bx-meteor text-3xl'></i>
+                        <div class="">Incentivise<br>focus</div>
+                    </div>
                 </div>
-                
             </div>
-        </div>
-        <div class="bg-red-500 w-96 h-96 rounded-md mx-auto flex items-center justify-center">
-            <img src="https://media.giphy.com/media/8VOjA6wWeCaic/giphy.gif">
+            <div class="bg-red-500 w-96 h-96 rounded-3xl mx-auto flex items-center justify-center">
+                <img src="https://media.giphy.com/media/8VOjA6wWeCaic/giphy.gif">
+            </div>
         </div>
     </div>
 </div>

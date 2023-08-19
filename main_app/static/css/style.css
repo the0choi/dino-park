@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/so-bad');
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Nunito&family=Open+Sans:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@200;400;800&family=Open+Sans:wght@400;800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/broken-console');
 
 * {
     font-family: 'Nunito', sans-serif;
@@ -8,56 +9,36 @@
 }
 
 h1 {
-    font-family: 'So Bad', sans-serif;
+    font-family: 'Broken Console', sans-serif;
     
 }
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
     /* background-image: url(https://i.imgur.com/t8GgaNE.jpeg); */
-    background-color:rgb(12, 19, 24);
-    size: fit;
+    background-image: url(https://i.imgur.com/N1hMOw8.png);
+    background-position: top;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-main {
-    flex: 1 0 auto;
-}
-
-.custom--nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-content: flex-start;
-    background: rgba(44, 53, 80, 0.37);
-  }
-
-  a {
+a {
     text-decoration: none;
     color: white;
-  }
+}
 
-  .nav-wrapper li {
+.nav-wrapper li {
     list-style-type: none;
     padding: 0 16px;
     margin-right: 10px;
     font-size: 24px;
-  }
-  .nav-wrapper ul {
-    display: flex;
-  }
+}
+
+.nav-wrapper ul {
+    display: flex;      
+}
   
-  .nav-wrapper {
+.nav-wrapper {
     align-items: center;
-  }
-  
-nav {
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: flex-start;
 }
 
 .custom--a {
@@ -202,4 +183,25 @@ nav {
 .custom--btn:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.clouds-overlay {
+    position: fixed;
+    /* bottom: 3rem; */
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url('https://i.imgur.com/qBYyG5k.png') repeat-x;
+
+    animation: cloudsAnimation 150s linear infinite;
+    z-index: -1; 
+}
+
+@keyframes cloudsAnimation {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }

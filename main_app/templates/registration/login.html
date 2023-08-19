@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="custom--main">
+<div class="custom--main h-screen -mt-20">
     <div class="wrapper">
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}

@@ -6,32 +6,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 3</title>
+    <title>Dino Park</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     {% tailwind_css %}
 </head>
+
 <body>
-    <header>
-        <div class="custom--nav">
-            <nav class="w-5/6 mx-auto">
-              <div class="heading">
-                <h1><a class="custom--a" href="/">Project 3</a></h1>
-              </div>
-              <div class="nav-wrapper">
-                <ul>
-                  <li><a class="custom--a" href="">About</a></li>
-                  {% if user.is_authenticated %}
-                    <li><a class="custom--a" href="">All Fields</a></li>
-                    <li><a class="custom--a" href="{% url 'logout' %}">Log Out</a></li>
-                  {% else %}
-                    <li><a class="custom--a" href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a class="custom--a" href="{% url 'login' %}" class="button">Login</a></li>
-                  {% endif %}
-                </ul>
-              </div>
-            </nav>
-        </div>
+    <header class="bg-gray-500 bg-opacity-20">
+      <div class="w-5/6 mx-auto">
+        <nav class="h-18 flex justify-between items-center content-start">
+          <div class="heading">
+            <a href="/"><h1 class="pt-3">Dino Park</h1></a>
+          </div>
+          <div class="nav-wrapper">
+            <ul>
+              <li><a class="custom--a" href="{% url 'about' %}">About</a></li>
+              {% if user.is_authenticated %}
+                <li><a class="custom--a" href="">All Fields</a></li>
+                <li><a class="custom--a" href="{% url 'logout' %}">Log Out</a></li>
+              {% else %}
+                <li><a class="custom--a" href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a class="custom--a" href="{% url 'login' %}" class="button">Login</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </div>
     </header>
 
     <main>
