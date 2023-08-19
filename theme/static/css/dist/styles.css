@@ -714,6 +714,21 @@ select {
   margin-bottom: 2.5rem;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.my-7 {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .-mt-20 {
   margin-top: -5rem;
 }
@@ -732,6 +747,14 @@ select {
 
 .-mt-5 {
   margin-top: -1.25rem;
+}
+
+.-mt-8 {
+  margin-top: -2rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 
 .block {
@@ -758,6 +781,10 @@ select {
   height: 100vh;
 }
 
+.h-36 {
+  height: 9rem;
+}
+
 .w-3\/5 {
   width: 60%;
 }
@@ -768,6 +795,18 @@ select {
 
 .w-96 {
   width: 24rem;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .content-start {
@@ -846,8 +885,22 @@ select {
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-20 {
   --tw-bg-opacity: 0.2;
+}
+
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
 }
 
 .p-10 {
@@ -880,6 +933,11 @@ select {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-bold {

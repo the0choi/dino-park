@@ -1,8 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>About Project 3</h1>
-<hr>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime quam animi tempore ducimus porro similique eligendi perspiciatis illum earum itaque provident voluptatem totam dolores molestias, tempora iusto, quae ratione sequi?</p>
+<div class="w-1/2 mx-auto flex items-center justify-center h-screen -mt-20">
+    <div class="w-200 border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-md shadow-xl p-10 bg-black bg-opacity-20">
+        <div class="flex justify-center items-center text-center">
+            <div>
+                <p class="font-bold text-2xl mb-3">
+                    <i class='bx bxs-message-square-dots'></i>
+                    - Welcome to Dino Park!
+                </p>
+                <div class="mx-4 my-7">
+                    <p><i class='bx bxs-star'></i>&nbsp;&nbsp;A unique way to stay on task and remain focused.</p>
+                    <p><i class='bx bxs-star'></i>&nbsp;&nbsp;Turn your focus sessions into cute hatchable dinosaurs.</p> 
+                    <p><i class='bx bxs-star'></i>&nbsp;&nbsp;Earn coins for each dino you hatch, unlock dino interactions, and build your Jurassic land!</p>
+                </div>
+                
+                <p>Dino Park gamifies the popular Pomodoro technique often used for productive moments in life. Simply begin hatching a dino egg whenever you want to focus, and watch as the egg hatches at the end of your session. Watch as your Dino Park grows, and see a manifestation of your productivity through the Parks you have built over each passing day.</p>
+                <button class="flex h-12 items-center justify-center px-5 my-8 rounded-full bg-red-600 font-bold text-white mx-auto">
+                    <a href="{% url 'signup' %}">GET STARTED</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
