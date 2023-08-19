@@ -201,3 +201,27 @@ a {
     transform: translateX(-50%);
   }
 }
+
+.isometric {
+    width: 45vmin; 
+    height: 45vmin;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    transform: rotateX(60deg) rotateZ(45deg);
+}
+  
+.tile {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgb(0, 180, 9);
+    position: relative;
+}
+  
+.tile img {
+    width: 60%; 
+    height: 120%;
+    transform: rotateZ(-45deg);
+    position: absolute;
+    top: -4vmin; 
+    left: -1vmin;
+}
