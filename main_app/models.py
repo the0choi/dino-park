@@ -10,8 +10,6 @@ class Field(models.Model):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    
-
     def __str__(self):
         return f'{self.date} ({self.id})'
 
