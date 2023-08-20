@@ -226,3 +226,11 @@ a {
     left: -1vmin;
 }
 
+.custom-height {
+  padding-top: 250px;
+}
+
+.custom-spacing-padding h1 {
+  padding: 10px;
+}
+
