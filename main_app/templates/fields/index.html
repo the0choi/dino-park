@@ -7,9 +7,71 @@
             
             <h1>All Boards</h1>
 
+            <div class="isometric">
+                <div class="tile">
+                    <a href="about/">
+                        <img src="https://i.imgur.com/OLfpwzO.gif">
+                    </a>
+                </div>
+                <div class="tile">
+                    <a href="about/">
+                        <img src="https://i.imgur.com/OLfpwzO.gif">
+                    </a>
+                </div>
+                <div class="tile">
+                    <a href="about/">
+                        <img src="https://i.imgur.com/OLfpwzO.gif">
+                    </a>
+                </div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
 
+            <div class="border-solid border-2 border-white border-opacity-20 p-10 rounded-xl">
+                <h1 class="mb-5">Timer</h1>
+                <div id="countdown" class="my-5 font-bold"></div>
 
+                <form id="countdown-form">
+                        <select id="timer-length" class="bg-gray-400 rounded-md">
+                            <option value="10">10 seconds (DEMO)</option>
+                            <option value="300">5 minutes</option>
+                            <option value="600">10 minutes</option>
+                            <option value="900">15 minutes</option>
+                        </select><br>
+                    <button id="start-timer" class="mt-5">Start!</button>
+                </form>
+
+                <div id="result" class="hidden">
+                    <p>Timer has finished!</p>
+                    <form>
+                        <button id="new-form-button">Hatch Egg</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>
-
 
 {% endblock %}

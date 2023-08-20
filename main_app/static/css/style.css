@@ -218,10 +218,11 @@ a {
 }
   
 .tile img {
+    height: 120%; 
     width: 60%; 
-    height: 120%;
     transform: rotateZ(-45deg);
     position: absolute;
     top: -4vmin; 
     left: -1vmin;
 }
+
