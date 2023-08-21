@@ -24,7 +24,8 @@
             <ul>
               <li><a class="custom--a" href="{% url 'about' %}">About</a></li>
               {% if user.is_authenticated %}
-              <li><a class="custom--a" href="{% url 'fields_index' %}">All Fields</a></li>
+              <li><a class="custom--a" href="{% url 'fields_create' %}">Add Park</a></li>
+              <li><a class="custom--a" href="{% url 'fields_index' %}">All Parks</a></li>
               <li><a class="custom--a" href="{% url 'logout' %}">Log Out</a></li>
               {% else %}
                 <li><a class="custom--a" href="{% url 'signup' %}">Sign Up</a></li>
