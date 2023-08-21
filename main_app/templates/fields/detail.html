@@ -6,21 +6,14 @@
         <div class="flex flex-col justify-center items-center text-center">
             <h1>Board for {{ field.date }}</h1>
             <div class="isometric">
-                <div class="tile">
-                    <a href="about/">
-                        <img src="https://i.imgur.com/OLfpwzO.gif" />
-                    </a>
-                </div>
-                <div class="tile">
-                    <a href="about/">
-                        <img src="https://i.imgur.com/OLfpwzO.gif" />
-                    </a>
-                </div>
-                <div class="tile">
-                    <a href="about/">
-                        <img src="https://i.imgur.com/OLfpwzO.gif" />
-                    </a>
-                </div>
+                {% for dino in field.get_dinos %}
+          <div class="tile">
+            <a href="{% url 'dinos_detail' dino.id %}">
+              <img src="{{ dino.url }}" alt="{{ dino.name }}" />
+            </a>
+          </div>
+        {% endfor %}
+                <div class="tile"></div>
                 <div class="tile"></div>
                 <div class="tile"></div>
                 <div class="tile"></div>
