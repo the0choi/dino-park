@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="custom--main h-screen -mt-20">
+    <div class="wrapper">
+        <h1 class="mb-5">Delete Park?</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete" class="btn">
+            <a href="{% url 'detail' cat.id %}">Cancel</a>
+          </form>
+        <p class="text-center mt-5">Note: This action can't be undone!</p>
+    </div>
+</div>
+
+{% endblock %}

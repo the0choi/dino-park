@@ -1,37 +1,55 @@
-const timerLengthSelect = document.getElementById('timer-length');
-const startTimerButton = document.getElementById('start-timer');
-const countdownDisplay = document.getElementById('countdown');
-const countdownForm = document.getElementById('countdown-form');
-const resultDiv = document.getElementById('result');
-const newFormButton = document.getElementById('new-form-button');
+const countdownEl = document.getElementById('countdown');
+const durationEl = document.getElementById('timer-length');
+const startEl = document.getElementById('start-timer');
+const pauseEl = document.getElementById('pause-timer');
+const hatchEl = document.getElementById('result');
+const eggEl = document.getElementById('egg')
 
 let countdownInterval;
-let isTimerRunning = false;
+let isPaused = false;
 
 function startCountdown(duration) {
-    if (isTimerRunning) {
-        return;
-    }
     
-    isTimerRunning = true;
-    
-    let remainingTime = duration;
-    countdownInterval = setInterval(() => {
-        const minutes = Math.floor(remainingTime / 60);
-        const seconds = remainingTime % 60;
-        countdownDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        remainingTime--;
+    // Removes the 1 second delay when starting timer
+    const mins = Math.floor(duration / 60);
+    const secs = duration % 60;
+    countdownEl.textContent = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    duration--;
 
-        if (remainingTime < 0) {
-            clearInterval(countdownInterval);
-            countdownDisplay.textContent = 'Time\'s up!';
-            resultDiv.style.display = 'block'; // Show the result div
-            isTimerRunning = false;
+
+    countdownInterval = setInterval(() => {
+        if (!isPaused) {
+            const mins = Math.floor(duration / 60);
+            const secs = duration % 60;
+            countdownEl.textContent = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            duration--;
+
+            if (duration < 0) {
+                clearInterval(countdownInterval);
+                countdownEl.textContent = '00:00';
+                pauseEl.classList.add('hidden');
+                hatchEl.classList.remove('hidden');
+            }
         }
+        
     }, 1000);
 }
 
-startTimerButton.addEventListener('click', () => {
-    const selectedDuration = parseInt(timerLengthSelect.value, 10);
-    startCountdown(selectedDuration);
+startEl.addEventListener('click', () => {
+    startEl.classList.add('hidden');
+    durationEl.classList.add('hidden');
+    eggEl.classList.remove('hidden');
+    pauseEl.classList.remove('hidden');
+    startCountdown(durationEl.value);
+});
+
+pauseEl.addEventListener('click', () => {
+    if (!isPaused) {
+        isPaused = true;
+        pauseEl.textContent = 'Start';
+
+    } else {
+        isPaused = false;
+        pauseEl.textContent = 'Pause';
+    }
 });
