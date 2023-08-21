@@ -10,6 +10,8 @@ urlpatterns = [
     path('fields/<int:pk>/delete/', views.FieldDelete.as_view(), name='fields_delete'),
     path('fields/<int:field_id>/add_dino/', views.add_dino, name='add_dino'),
     path('dinos/<int:dino_id>/', views.dinos_detail, name='dinos_detail'),
+    path('Dinos/<int:pk>/update/', views.DinoUpdate.as_view(), name='dinos_update'),
+    path('Dinos/<int:pk>/delete/', views.DinoDelete.as_view(), name='dinos_delete'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.signup, name='signup'),
 ]

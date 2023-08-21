@@ -233,7 +233,7 @@ a {
   padding-top: 250px;
 }
 .custom-height--2 {
-  padding-top: 100px;
+  padding-top: 300px;
 }
 
 .custom-spacing-padding h1 {
@@ -258,4 +258,10 @@ input {
     border-radius: 36px;
     text-align: center;
     text-shadow: 2px 2px 8px rgb(128, 128, 128);
+}
+
+.detail-page-sizing-text {
+ 
+  font-size: 24px;
+  padding-bottom: 20px;
 }

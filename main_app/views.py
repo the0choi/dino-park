@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Field, Dino
 from .forms import DinoForm
+from django.urls import reverse_lazy
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -62,6 +63,17 @@ def add_dino(request, field_id):
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
     return render(request, 'dinos/detail.html', {'dino': dino})
+
+class DinoUpdate(LoginRequiredMixin, UpdateView):
+    model = Dino
+    fields = ['name']
+
+class DinoDelete(LoginRequiredMixin, DeleteView):
+    model = Dino
+
+    def get_success_url(self):
+        field = self.object.field
+        return reverse_lazy('fields_detail', kwargs={'field_id': field.id})
 
 
 def signup(request):
