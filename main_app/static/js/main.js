@@ -53,3 +53,18 @@ pauseEl.addEventListener('click', () => {
         pauseEl.textContent = 'Pause';
     }
 });
+
+hatchEl.addEventListener('click', () => {
+    const emptyTile = Array.from(tiles).find(tile => !tile.querySelector('a img'));
+    if (emptyTile) {
+        const dinoImg = document.createElement('img');
+        dinoImg.src = 'https://i.imgur.com/OLfpwzO.gif';
+        const dinoLink = document.createElement('a');
+        dinoLink.href = 'about/';
+        dinoLink.appendChild(dinoImg);
+        emptyTile.appendChild(dinoLink);
+        hatchEl.classList.add('hidden');
+    } else {
+        console.log('No empty tiles available for hatching.');
+    }
+});
