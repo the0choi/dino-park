@@ -3,9 +3,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
-
 class Field(models.Model):
-    date = models.DateField()
+    date = models.DateField('Date', unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def form_valid(self, form):

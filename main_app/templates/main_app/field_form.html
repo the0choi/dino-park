@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="custom--main h-screen -mt-20">
+    <div class="wrapper">
+        <h1 class="mb-5">Add Park</h1>
+        <form action="" method="POST" class="flex flex-col items-center justify-center">
+            {% csrf_token %}
+            <input type="date" name="{{ form.date.name }}" id="{{ form.date.id_for_label }}" value="{{ form.date.value|default:'' }}" class="bg-transparent border-2 border-white border-opacity-20 rounded-full w-full text-center">
+            <input type="submit" value="Add" class="custom--btn mt-10">
+        </form>
+        <p class="text-center mt-5">Note: Only 1 park can be made per day!</p>
+    </div>
+</div>
+
+{% endblock %}

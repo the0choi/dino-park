@@ -12,7 +12,6 @@ h1 {
 }
 
 body {
-  /* background-image: url(https://i.imgur.com/t8GgaNE.jpeg); */
   background-image: url(https://i.imgur.com/N1hMOw8.png);
   background-position: top;
   background-size: cover;
@@ -26,9 +25,9 @@ a {
 
 .nav-wrapper li {
   list-style-type: none;
-  padding: 0 16px;
-  margin-right: 10px;
-  font-size: 24px;
+  padding: 1vmin;
+  margin-right: 1vmin;
+  font-size: 3vmin;
 }
 
 .nav-wrapper ul {
@@ -95,7 +94,7 @@ a {
 }
 
 .wrapper {
-  width: 420px;
+  width: 45vmin;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
@@ -236,4 +235,8 @@ a {
 
 .spacer {
   margin-left: 10px;
+}
+
+input {
+    color-scheme: dark;
 }

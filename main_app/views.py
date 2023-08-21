@@ -31,9 +31,23 @@ def fields_index(request):
 @login_required
 def fields_detail(request, field_id):
     field = Field.objects.get(id=field_id)
-    dinos = field.dinos.all().values_list('id')
+    # dinos = Field.dinos.all().values_list('id')
     current_date = datetime.datetime.now().date()
-    return render(request, 'fields/detail.html', {'field': field, 'dinos': dinos, 'current_date': current_date})
+    return render(request, 'fields/detail.html', {'field': field, 'current_date': current_date})
+
+
+class FieldCreate(LoginRequiredMixin, CreateView):
+    model = Field
+    fields = ['date']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class FieldDelete(LoginRequiredMixin, DeleteView):
+    model = Field
+    success_url = '/fields'
 
 
 @login_required
@@ -41,16 +55,17 @@ def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
     return render(request, 'dinos/detail.html', {'dino': dino})
 
+
 def signup(request):
-  error_message = ''
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      return redirect('home')
-    else:
-      error_message = 'Invalid sign up - try again'
-  form = UserCreationForm()
-  context = {'form': form, 'error_message': error_message}
-  return render(request, 'registration/signup.html', context)
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
