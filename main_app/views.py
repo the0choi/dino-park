@@ -34,8 +34,7 @@ def fields_index(request):
 def fields_detail(request, field_id):
     field = Field.objects.get(id=field_id)
     # dinos = Field.dinos.all().values_list('id')
-    current_date = datetime.datetime.now().date()
-    return render(request, 'fields/detail.html', {'field': field, 'current_date': current_date})
+    return render(request, 'fields/detail.html', {'field': field})
 
 
 class FieldCreate(LoginRequiredMixin, CreateView):

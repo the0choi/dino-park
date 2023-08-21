@@ -4,7 +4,6 @@ const startEl = document.getElementById('start-timer');
 const pauseEl = document.getElementById('pause-timer');
 const cancelEl = document.getElementById('cancel-timer');
 const hatchEl = document.getElementById('result');
-const eggEl = document.getElementById('egg')
 
 let countdownInterval;
 let isPaused = false;
@@ -29,6 +28,7 @@ function startCountdown(duration) {
                 clearInterval(countdownInterval);
                 countdownEl.textContent = '00:00';
                 pauseEl.classList.add('hidden');
+                cancelEl.classList.add('hidden');
                 hatchEl.classList.remove('hidden');
             }
         }
@@ -39,7 +39,6 @@ function startCountdown(duration) {
 startEl.addEventListener('click', () => {
     startEl.classList.add('hidden');
     durationEl.classList.add('hidden');
-    eggEl.classList.remove('hidden');
     pauseEl.classList.remove('hidden');
     cancelEl.classList.remove('hidden');
     startCountdown(durationEl.value);
@@ -60,39 +59,24 @@ cancelEl.addEventListener('click', () => {
     clearInterval(countdownInterval); 
     countdownEl.textContent = '00:00'; 
     hatchEl.classList.add('hidden'); 
+    pauseEl.classList.add('hidden');
+    cancelEl.classList.add('hidden'); 
     startEl.classList.remove('hidden'); 
     durationEl.classList.remove('hidden'); 
-    pauseEl.classList.remove('visible');
-    cancelEl.classList.remove('visible'); 
     isPaused = false;
 });
 
-hatchEl.addEventListener('click', () => {
-    const emptyTile = Array.from(tiles).find(tile => !tile.querySelector('a img'));
-    if (emptyTile) {
-        const dinoImg = document.createElement('img');
-        dinoImg.src = 'https://i.imgur.com/OLfpwzO.gif';
-        const dinoLink = document.createElement('a');
-        dinoLink.href = 'about/';
-        dinoLink.appendChild(dinoImg);
-        emptyTile.appendChild(dinoLink);
-        hatchEl.classList.add('hidden');
-    } else {
-        console.log('No empty tiles available for hatching.');
-    }
-});
-
-hatchEl.addEventListener('click', () => {
-    const emptyTile = Array.from(tiles).find(tile => !tile.querySelector('a img'));
-    if (emptyTile) {
-        const dinoImg = document.createElement('img');
-        dinoImg.src = 'https://i.imgur.com/OLfpwzO.gif';
-        const dinoLink = document.createElement('a');
-        dinoLink.href = 'about/';
-        dinoLink.appendChild(dinoImg);
-        emptyTile.appendChild(dinoLink);
-        hatchEl.classList.add('hidden');
-    } else {
-        console.log('No empty tiles available for hatching.');
-    }
-});
+// hatchEl.addEventListener('click', () => {
+//     const emptyTile = Array.from(tiles).find(tile => !tile.querySelector('a img'));
+//     if (emptyTile) {
+//         const dinoImg = document.createElement('img');
+//         dinoImg.src = 'https://i.imgur.com/OLfpwzO.gif';
+//         const dinoLink = document.createElement('a');
+//         dinoLink.href = 'about/';
+//         dinoLink.appendChild(dinoImg);
+//         emptyTile.appendChild(dinoLink);
+//         hatchEl.classList.add('hidden');
+//     } else {
+//         console.log('No empty tiles available for hatching.');
+//     }
+// });
