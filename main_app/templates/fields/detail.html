@@ -1,50 +1,82 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% block content %}
 
-<div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
-    <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-md shadow-xl p-10 bg-black bg-opacity-20 px-40">
-        <div class="flex flex-col justify-center items-center text-center">
-            
-            <h1>Today's Board</h1>
-            <div class="isometric">
-                <div class="tile">
-                    <a href="about/">
-                        <img src="https://i.imgur.com/OLfpwzO.gif">
-                    </a>
-                </div>
-                <div class="tile">
-                    <a href="about/">
-                        <img src="https://i.imgur.com/OLfpwzO.gif">
-                    </a>
-                </div>
-                <div class="tile">
-                    <a href="about/">
-                        <img src="https://i.imgur.com/OLfpwzO.gif">
-                    </a>
-                </div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
+<div
+  class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20 custom-height--2"
+>
+  <div
+    class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-md shadow-xl p-10 bg-black bg-opacity-20 px-40"
+  >
+    <div class="flex flex-col justify-center items-center text-center">
+      <h1>Today's Board</h1>
+      <div class="isometric">
+        <div class="tile">
+          <a href="about/">
+            <img src="https://i.imgur.com/OLfpwzO.gif" />
+          </a>
+        </div>
+        <div class="tile">
+          <a href="about/">
+            <img src="https://i.imgur.com/OLfpwzO.gif" />
+          </a>
+        </div>
+        <div class="tile">
+          <a href="about/">
+            <img src="https://i.imgur.com/OLfpwzO.gif" />
+          </a>
+        </div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+      </div>
+            <div class="border-solid border-2 border-white border-opacity-50 p-10 rounded-xl">
+                <div id="countdown" class="mb-5 font-bold text-7xl">00:00</div>
+                <select id="timer-length" class="bg-transparent border-2 border-white border-opacity-50 rounded-full w-full text-center">
+                    <option value="10">10 seconds (DEMO)</option>
+                    <option value="300">5 minutes</option>
+                    <option value="600">10 minutes</option>
+                    <option value="900">15 minutes</option>
+                    <option value="1200">20 minutes</option>
+                    <option value="1500">25 minutes</option>
+                    <option value="1800">30 minutes</option>
+                    <option value="2100">35 minutes</option>
+                    <option value="2400">40 minutes</option>
+                    <option value="2700">45 minutes</option>
+                    <option value="3000">50 minutes</option>
+                    <option value="3300">55 minutes</option>
+                    <option value="3600">60 minutes</option>
+                </select>
+                <button id="start-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-red-600 font-bold custom--btn">Start</button>
+                <img src="https://i.imgur.com/8Oo6ECG.gif" id="egg" class="mx-auto hidden">
+                <button id="pause-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-red-600 font-bold custom--btn hidden">Pause</button>
+                <form action="" method="POST" class="flex flex-col items-center justify-center">
+                    {% csrf_token %}
+                    <button id="result" class="flex h-12 items-center justify-center mx-auto px-5 rounded-full bg-red-600 font-bold custom--btn hidden">Hatch Egg</button>
+                </form>
+                
+
+
             </div>
+
         </div>
     </div>
 </div>

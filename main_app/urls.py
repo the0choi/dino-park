@@ -9,6 +9,7 @@ urlpatterns = [
     path('fields/create/', views.FieldCreate.as_view(), name='fields_create'),
     path('fields/<int:pk>/delete/', views.FieldDelete.as_view(), name='fields_delete'),
     path('dinos/<int:dino_id>/', views.dinos_detail, name='dinos_detail'),
+    path('hatch_dino/', views.hatch_dino, name='hatch_dino'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.signup, name='signup'),
 ]

@@ -228,6 +228,9 @@ a {
 .custom-height {
   padding-top: 250px;
 }
+.custom-height--2 {
+  padding-top: 100px;
+}
 
 .custom-spacing-padding h1 {
   padding: 10px;
