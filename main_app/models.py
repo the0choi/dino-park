@@ -7,6 +7,9 @@ class Field(models.Model):
     date = models.DateField('Date', unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def get_dinos(self):
+        return Dino.objects.filter(field=self)
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -23,7 +26,6 @@ class Dino(models.Model):
     duration = models.CharField(max_length=20)
     url = models.URLField(max_length=200)
     field = models.ForeignKey(Field, on_delete=models.CASCADE)
-    hatched_dino = models.ForeignKey('Dino', on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return f'{self.duration} ({self.id})'
