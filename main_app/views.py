@@ -57,33 +57,6 @@ def dinos_detail(request, dino_id):
     return render(request, 'dinos/detail.html', {'dino': dino})
 
 
-def hatch_dino(request):
-    response_data = {'success': False, 'message': 'An error occurred.'}
-    specific_dino_url = "https://i.imgur.com/OLfpwzO.gif"  
-
-    if request.method == 'POST':
-        fields = Field.objects.filter(user=request.user, hatched_dino__isnull=True)
-
-        if fields.exists():
-            random_field = random.choice(fields)
-            available_dinos = Dino.objects.filter(field__isnull=True, url=specific_dino_url)
-
-            if available_dinos.exists():
-                specific_dino = available_dinos.first()
-                random_field.hatched_dino = specific_dino
-                random_field.save()
-
-                response_data = {'success': True, 'message': 'Dino hatched successfully.'}
-            else:
-                response_data['message'] = 'No available dinos to hatch.'
-        else:
-            response_data['message'] = 'No empty fields available.'
-    else:
-        response_data['message'] = 'Invalid request method.'
-
-    return JsonResponse(response_data)
-
-
 def signup(request):
     error_message = ''
     if request.method == 'POST':

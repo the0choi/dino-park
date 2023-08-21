@@ -7,6 +7,9 @@ class Field(models.Model):
     date = models.DateField('Date', unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def get_dinos(self):
+        return Dino.objects.filter(field=self)
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
