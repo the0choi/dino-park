@@ -2,6 +2,7 @@ const countdownEl = document.getElementById('countdown');
 const durationEl = document.getElementById('timer-length');
 const startEl = document.getElementById('start-timer');
 const pauseEl = document.getElementById('pause-timer');
+const cancelEl = document.getElementById('cancel-timer');
 const hatchEl = document.getElementById('result');
 const eggEl = document.getElementById('egg')
 
@@ -40,6 +41,7 @@ startEl.addEventListener('click', () => {
     durationEl.classList.add('hidden');
     eggEl.classList.remove('hidden');
     pauseEl.classList.remove('hidden');
+    cancelEl.classList.remove('hidden');
     startCountdown(durationEl.value);
 });
 
@@ -53,3 +55,15 @@ pauseEl.addEventListener('click', () => {
         pauseEl.textContent = 'Pause';
     }
 });
+
+cancelEl.addEventListener('click', () => {
+    clearInterval(countdownInterval); 
+    countdownEl.textContent = '00:00'; 
+    hatchEl.classList.add('hidden'); 
+    startEl.classList.remove('hidden'); 
+    durationEl.classList.remove('hidden'); 
+    pauseEl.classList.remove('visible');
+    cancelEl.classList.remove('visible'); 
+    isPaused = false;
+});
+
