@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Field, Dino
-from django.http import JsonResponse
+from django.urls import reverse_lazy
 # from .forms import
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -55,6 +55,17 @@ class FieldDelete(LoginRequiredMixin, DeleteView):
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
     return render(request, 'dinos/detail.html', {'dino': dino})
+
+class DinoUpdate(LoginRequiredMixin, UpdateView):
+    model = Dino
+    fields = ['name']
+
+class DinoDelete(LoginRequiredMixin, DeleteView):
+    model = Dino
+
+    def get_success_url(self):
+        field = self.object.field
+        return reverse_lazy('fields_detail', kwargs={'field_id': field.id})
 
 
 def signup(request):

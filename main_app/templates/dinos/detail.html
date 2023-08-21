@@ -8,6 +8,9 @@
             <p>Dino Name: {{dino.name}}</p>
             <p>Dino Duration: {{dino.duration}}</p>
             <img src="{{ dino.url }}">
+            <a class="" href="{% url 'dinos_update' dino.id %}">Edit</a>
+            <br>
+            <a href="{% url 'dinos_delete' dino.id %}">Delete</a>
         </div>
 
     </div>
