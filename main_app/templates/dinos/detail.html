@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Dino <details></details></h1>
+
+<div class="dino-detail">
+    <h1>Dino Detail: {{ dino.name }}</h1>
+
+    <a href="{% url 'fields_detail' field.id %}">
+        Back to Field: {{ field.name }}
+    </a>
+</div>
+
+{% endblock %}
