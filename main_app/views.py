@@ -1,14 +1,9 @@
-import os
-import uuid
-import boto3
 import datetime
-import random
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Field, Dino
-from django.http import JsonResponse
-# from .forms import
+from .forms import DinoForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -33,8 +28,9 @@ def fields_index(request):
 @login_required
 def fields_detail(request, field_id):
     field = Field.objects.get(id=field_id)
+    dino_form = DinoForm()
     # dinos = Field.dinos.all().values_list('id')
-    return render(request, 'fields/detail.html', {'field': field})
+    return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form})
 
 
 class FieldCreate(LoginRequiredMixin, CreateView):
@@ -49,6 +45,17 @@ class FieldCreate(LoginRequiredMixin, CreateView):
 class FieldDelete(LoginRequiredMixin, DeleteView):
     model = Field
     success_url = '/fields'
+
+
+@login_required
+def add_dino(request, field_id):
+    form = DinoForm(request.POST)
+    print(form)
+    if form.is_valid():
+        new_dino = form.save(commit=False)
+        new_dino.field_id = field_id
+        new_dino.save()
+    return redirect('fields_detail', field_id=field_id)
 
 
 @login_required

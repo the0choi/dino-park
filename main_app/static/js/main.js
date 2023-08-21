@@ -26,7 +26,7 @@ function startCountdown(duration) {
 
             if (duration < 0) {
                 clearInterval(countdownInterval);
-                countdownEl.textContent = '00:00';
+                countdownEl.classList.add('hidden');
                 pauseEl.classList.add('hidden');
                 cancelEl.classList.add('hidden');
                 hatchEl.classList.remove('hidden');
@@ -65,18 +65,3 @@ cancelEl.addEventListener('click', () => {
     durationEl.classList.remove('hidden'); 
     isPaused = false;
 });
-
-// hatchEl.addEventListener('click', () => {
-//     const emptyTile = Array.from(tiles).find(tile => !tile.querySelector('a img'));
-//     if (emptyTile) {
-//         const dinoImg = document.createElement('img');
-//         dinoImg.src = 'https://i.imgur.com/OLfpwzO.gif';
-//         const dinoLink = document.createElement('a');
-//         dinoLink.href = 'about/';
-//         dinoLink.appendChild(dinoImg);
-//         emptyTile.appendChild(dinoLink);
-//         hatchEl.classList.add('hidden');
-//     } else {
-//         console.log('No empty tiles available for hatching.');
-//     }
-// });
