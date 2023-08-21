@@ -188,7 +188,7 @@ a {
   width: 200%;
   height: 100%;
   background: url("https://i.imgur.com/qBYyG5k.png") repeat-x;
-  animation: cloudsAnimation 150s linear infinite;
+  animation: cloudsAnimation 240s linear infinite;
   z-index: -1;
 }
 
@@ -242,4 +242,8 @@ a {
 
 input {
     color-scheme: dark;
+}
+
+.visible {
+    display: block;
 }
