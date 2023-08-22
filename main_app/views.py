@@ -95,7 +95,18 @@ def dinos_detail(request, dino_id):
 
 class DinoUpdate(LoginRequiredMixin, UpdateView):
     model = Dino
-    fields = ['name']
+    fields = ['name', 'colour']
+
+    def form_valid(self, form):
+        dino = form.save(commit=False)
+        color = form.cleaned_data['colour']
+        for c, url in DINO_URLS:
+            if c == color:
+                dino.url = url
+                break
+        dino.save()
+        return redirect('dinos_detail', dino.id)
+    
 
 class DinoDelete(LoginRequiredMixin, DeleteView):
     model = Dino

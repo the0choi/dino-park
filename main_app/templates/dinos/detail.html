@@ -5,14 +5,24 @@
     <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow spacing--detail">
         <div class="flex flex-col justify-center items-center text-center">
                 <h1 class="detail-page-sizing-text">Dino Details</h1>
-                <a href="" class="custom--a custom--return">Return</a>
-                <p>Dino Name: {{dino.name}}</p>
-                <p>Dino Duration: {{dino.duration}}</p>
+                <p>Name: {{dino.name}}</p>
+                <p>
+                    {% if dino.colour|lower == 'dark green' %}
+                    Colour: <span style="color: #006400;"> {{ dino.colour }}</span>
+                    {% elif dino.colour|lower == 'dark blue' %}
+                    Colour: <span style="color: #00008B;">{{ dino.colour }}</span>
+                    {% elif dino.colour|lower == 'light grey' %}
+                    Colour: <span style="color: #D3D3D3;">{{ dino.colour }}</span>
+                    {% else %}
+                       Color: <span style="color: {{ dino.colour }}">{{ dino.colour }}</span>
+                    {% endif %}
+                </p>
+                <p>Session Duration: {{dino.duration}}</p>
                 <img class="img--size" src="{{ dino.url }}">
                 <div class="flex ">
-                    <a class="spacer--1 custom--b custom--Dino-font" href="{% url 'dinos_update' dino.id %}">Edit</a>
+                    <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn" href="{% url 'dinos_update' dino.id %}">Edit</a>
                     <br>
-                    <a class="custom--b custom--Dino-font" href="{% url 'dinos_delete' dino.id %}">Delete</a>
+                    <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn" href="{% url 'dinos_delete' dino.id %}">Delete</a>
                 </div>
         </div>
 
