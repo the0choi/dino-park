@@ -12,7 +12,7 @@ h1 {
 }
 
 .text-shadow {
-    text-shadow: 2px 2px 8px rgb(128, 128, 128);
+  text-shadow: 2px 2px 8px rgb(128, 128, 128);
 }
 
 body {
@@ -206,27 +206,27 @@ a {
 }
 
 .isometric {
-    width: 45vmin; 
-    height: 45vmin;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    transform: rotateX(60deg) rotateZ(45deg);
+  width: 45vmin;
+  height: 45vmin;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  transform: rotateX(60deg) rotateZ(45deg);
 }
-  
+
 .tile {
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background-color: rgb(0, 180, 9);
-    position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgb(0, 180, 9);
+  position: relative;
 }
-  
+
 .tile img {
-    height: 120%; 
-    width: 60%; 
-    transform: rotateZ(-45deg);
-    position: absolute;
-    top: -4vmin; 
-    left: -1vmin;
+  height: 120%;
+  width: 60%;
+  transform: rotateZ(-45deg);
+  position: absolute;
+  top: -4vmin;
+  left: -1vmin;
 }
 
 .custom-height {
@@ -245,11 +245,11 @@ a {
 }
 
 input {
-    color-scheme: dark;
+  color-scheme: dark;
 }
 
 .visible {
-    display: block;
+  display: block;
 }
 
 #id_name, #id_colour {
@@ -271,7 +271,61 @@ input {
 
 
 .detail-page-sizing-text {
- 
   font-size: 24px;
   padding-bottom: 20px;
+}
+
+.spacing--detail p,
+a {
+  padding: 5px;
+  font-size: 20px;
+}
+.spacing--detail h1 {
+  font-size: 30px;
+}
+
+.img--size {
+  width: 100px;
+  height: 100px;
+}
+
+.spacer--1 {
+  display: flex;
+  margin-right: 100px;
+}
+
+.label--spacing {
+  margin-right: 10px;
+}
+
+.spacer--2 {
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+.colored-text {
+  color: red;
+}
+
+.custom--c {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  color: white;
+  padding-right: 60px;
+}
+
+.delete--form {
+  display: inline-flex;
+  
+}
+
+.custom--return {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: "Broken Console", sans-serif;
+}
+
+.custom--Dino-font {
+  font-family: "Broken Console", sans-serif;
 }

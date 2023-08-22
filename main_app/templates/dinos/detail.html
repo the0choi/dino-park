@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20 custom-height">
-    <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow">
-        <div class="flex flex-col justify-center items-center text-center ">
-            <h1 class="detail-page-sizing-text">Dino Details</h1>
-            <p>Dino Name: {{dino.name}}</p>
-            <p>Dino Duration: {{dino.duration}}</p>
-            <img src="{{ dino.url }}">
-            <a class="" href="{% url 'dinos_update' dino.id %}">Edit</a>
-            <br>
-            <a href="{% url 'dinos_delete' dino.id %}">Delete</a>
+<div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
+    <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow spacing--detail">
+        <div class="flex flex-col justify-center items-center text-center">
+                <h1 class="detail-page-sizing-text">Dino Details</h1>
+                <a href="" class="custom--a custom--return">Return</a>
+                <p>Dino Name: {{dino.name}}</p>
+                <p>Dino Duration: {{dino.duration}}</p>
+                <img class="img--size" src="{{ dino.url }}">
+                <div class="flex ">
+                    <a class="spacer--1 custom--b custom--Dino-font" href="{% url 'dinos_update' dino.id %}">Edit</a>
+                    <br>
+                    <a class="custom--b custom--Dino-font" href="{% url 'dinos_delete' dino.id %}">Delete</a>
+                </div>
         </div>
 
     </div>
