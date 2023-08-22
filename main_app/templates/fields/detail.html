@@ -43,7 +43,7 @@
                 <div class="">
                     <div id="countdown" class="font-bold text-7xl">00:00</div>
                     <select id="timer-length" class="bg-transparent border-2 border-white border-opacity-50 rounded-full w-full text-center my-3 text-shadow">
-                        <option value="10">10 seconds (DEMO)</option>
+                        <option value="5">5 seconds (DEMO)</option>
                         <option value="300">5 minutes</option>
                         <option value="600">10 minutes</option>
                         <option value="900">15 minutes</option>
@@ -62,9 +62,11 @@
                         <button id="pause-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-red-600 font-bold custom--btn inline-block hidden">Pause</button>
                     <button id="cancel-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-red-600 font-bold custom--btn inline-block hidden">Cancel</button>
                     </div>
-                    <form action="" method="POST" class="flex flex-col items-center justify-center">
+                    <form action="{% url 'add_dino' field.id %}" method="POST" class="flex flex-col items-center justify-center hidden" id="result">
                         {% csrf_token %}
-                        <button id="result" class="flex h-12 items-center justify-center mt-5 mx-auto px-5 rounded-full bg-red-600 font-bold custom--btn hidden">Hatch Egg</button>
+                        {{ dino_form.name }}
+
+                        <input type="submit" class="flex h-12 items-center justify-center mt-5 mx-auto px-5 rounded-full bg-red-600 font-bold custom--btn" value="Hatch Egg">
                     </form>
                 </div>
                 <div class="">

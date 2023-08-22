@@ -252,6 +252,14 @@ input {
   display: block;
 }
 
+#id_name {
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 36px;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgb(128, 128, 128);
+}
+
 .detail-page-sizing-text {
   font-size: 24px;
   padding-bottom: 20px;
