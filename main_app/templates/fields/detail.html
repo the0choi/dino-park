@@ -10,7 +10,7 @@
                 {% for dino in field.get_dinos %}
                     <div class="tile">
                         <a href="{% url 'dinos_detail' dino.id %}">
-                            <img src="{{ dino.url }}" alt="{{ dino.name }}" />
+                            <img src="{{ dino.url }}" draggable="false" alt="{{ dino.name }}" />
                         </a>
                     </div>
                 {% endfor %}

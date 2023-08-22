@@ -18,7 +18,6 @@ function startCountdown(duration) {
     countdownEl.textContent = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
     formDurationEl.value = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
     duration--;
-    formColour.placeholder = 'Name'
 
 
     countdownInterval = setInterval(() => {
@@ -36,7 +35,6 @@ function startCountdown(duration) {
                 hatchEl.classList.remove('hidden');
             }
         }
-        
     }, 1000);
 }
 
