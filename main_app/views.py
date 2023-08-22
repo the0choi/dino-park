@@ -1,4 +1,6 @@
 import datetime
+from random import shuffle
+from django.db.models import F
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -44,7 +46,15 @@ def fields_detail(request, field_id):
     dino_form = DinoForm()
     remaining_tiles = int(25 - len(field.dino_set.all()))
     current_date = datetime.datetime.now()
-    return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form, 'remaining_tiles': range(remaining_tiles), 'current_date': current_date})
+
+    # Calculates total focus time for a field
+    total_secs = 0
+    for dino in field.dino_set.all():
+        mins, secs = map(int, dino.duration.split(":"))
+        total_secs += mins * 60 + secs
+    focus_time = f'{total_secs // 60}'
+
+    return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form, 'remaining_tiles': range(remaining_tiles), 'current_date': current_date, 'focus_time': focus_time})
 
 
 class FieldCreate(LoginRequiredMixin, CreateView):

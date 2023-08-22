@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dino Park</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <script defer src="{% static 'js/main.js' %}"></script>
+    <script defer src="{% static 'js/timer.js' %}"></script>
+    <script defer src="{% static 'js/randomBoard.js' %}"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     {% tailwind_css %}
 </head>
@@ -22,14 +23,14 @@
           </div>
           <div class="nav-wrapper">
             <ul>
-              <li><a class="custom--a" href="{% url 'about' %}">About</a></li>
+              <li><a class="custom--a font-semibold" href="{% url 'about' %}">About</a></li>
               {% if user.is_authenticated %}
-              <li><a class="custom--a" href="{% url 'fields_create' %}">Add Park</a></li>
-              <li><a class="custom--a" href="{% url 'fields_index' %}">All Parks</a></li>
-              <li><a class="custom--a" href="{% url 'logout' %}">Log Out</a></li>
+              <li><a class="custom--a font-semibold" href="{% url 'fields_create' %}">Add Park</a></li>
+              <li><a class="custom--a font-semibold" href="{% url 'fields_index' %}">All Parks</a></li>
+              <li><a class="custom--a font-semibold" href="{% url 'logout' %}">Log Out</a></li>
               {% else %}
-                <li><a class="custom--a" href="{% url 'signup' %}">Sign Up</a></li>
-                <li><a class="custom--a" href="{% url 'login' %}" class="button">Login</a></li>
+                <li><a class="custom--a font-semibold" href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a class="custom--a font-semibold" href="{% url 'login' %}" class="button">Login</a></li>
               {% endif %}
             </ul>
           </div>

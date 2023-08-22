@@ -216,7 +216,9 @@ a {
 
 .tile {
   border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgb(0, 180, 9);
+  background-image: url(https://i.imgur.com/8om8d4E.png);
+  background-size: 123%;
+  background-position: center;
   position: relative;
 }
 
