@@ -10,27 +10,15 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 <table>
-                    <tbody>
-                        <tr>
-                            <th>
-                            <label class="label--spacing" for="id_name">Name:</label>
-                            </th>
-                            <td>
-                                <div class="input-box">
-                                    <input type="text" name="name" required class="text-shadow" id="id_name">
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </tbody>
-                <input type="submit" value="Submit" class="spacer--2 custom--b custom--c text-shadow custom--Dino-font">
-                <a href="{% url 'dinos_detail' dino.id %}" class="custom--b custom--Dino-font">Cancel</a>
+                    {{ form.as_table }}
+                </table>
+           
+                <input type="submit" value="Submit" class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn">
+                <a href="{% url 'dinos_detail' dino.id %}" class="inline-flex h-12 items-center justify-center px-5 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn ">Cancel</a>
         </div>
 
     </div>
  </div>
-
-
 
 
 {% endblock %}

@@ -5,13 +5,23 @@
     <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow">
         <div class="flex flex-col justify-center items-center text-center spacing--detail">
             <h1>Delete</h1>
-           <p>are you sure you want to Delete <span class="colored-text">{{ object.name }}</span> ?</p>
+            <p>
+                {% if dino.colour|lower == 'dark green' %}
+                are you sure you want to Delete <span style="color: #006400;"> {{ dino.name }}</span> ?
+                {% elif dino.colour|lower == 'dark blue' %}
+                are you sure you want to Delete <span style="color: #00008B;">{{ dino.name }}</span> ?
+                {% elif dino.colour|lower == 'light grey' %}
+                are you sure you want to Delete <span style="color: #D3D3D3;">{{ dino.name }}</span> ?
+                {% else %}
+                are you sure you want to Delete <span style="color: {{ dino.colour }}">{{ dino.name}}</span> ?
+                {% endif %}
+            </p>
             <img class="img--size" src="{{ dino.url }}">
             <form action="" method="POST">
                 {% csrf_token %}
                 <div class="delete--form">
-                    <input type="submit" value="Yes - Delete!" class="custom--b custom--c text-shadow custom--Dino-font">
-                    <a href="{% url 'dinos_detail' dino.id %}" class="custom--b custom--Dino-font">Cancel</a>
+                    <input type="submit" value="Yes - Delete!" class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn">
+                    <a href="{% url 'dinos_detail' dino.id %}" class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn">Cancel</a>
                 </div>
               </form>
         </div>
