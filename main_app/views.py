@@ -10,6 +10,18 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+DINO_URLS = {
+    ('Blue', 'https://i.imgur.com/dikM05s.gif'), 
+    ('Pink', 'https://i.imgur.com/CamDYFr.gif'), 
+    ('Grey', 'https://i.imgur.com/0bin3rQ.gif'), 
+    ('Dark Blue', 'https://i.imgur.com/AS84RMX.gif'), 
+    ('Light Grey', 'https://i.imgur.com/Uh8Bg49.gif'), 
+    ('Red', 'https://i.imgur.com/c5XOuHP.gif'), 
+    ('Orange', 'https://i.imgur.com/s5H4eOr.gif'), 
+    ('Green', 'https://i.imgur.com/lTOcnhK.gif'), 
+    ('Yellow', 'https://i.imgur.com/Ptsxyuv.gif'), 
+    ('Dark Green', 'https://i.imgur.com/QRnJ2Fu.gif')
+}
 
 def home(request):
     return render(request, 'home.html')
@@ -30,8 +42,9 @@ def fields_index(request):
 def fields_detail(request, field_id):
     field = Field.objects.get(id=field_id)
     dino_form = DinoForm()
-    # dinos = Field.dinos.all().values_list('id')
-    return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form})
+    remaining_tiles = int(25 - len(field.dino_set.all()))
+    current_date = datetime.datetime.now()
+    return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form, 'remaining_tiles': range(remaining_tiles), 'current_date': current_date})
 
 
 class FieldCreate(LoginRequiredMixin, CreateView):
@@ -51,10 +64,13 @@ class FieldDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def add_dino(request, field_id):
     form = DinoForm(request.POST)
-    print(form)
     if form.is_valid():
         new_dino = form.save(commit=False)
         new_dino.field_id = field_id
+        for colour, url in DINO_URLS:
+            if colour == new_dino.colour:
+                new_dino.url = url
+
         new_dino.save()
     return redirect('fields_detail', field_id=field_id)
 

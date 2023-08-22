@@ -252,13 +252,23 @@ input {
     display: block;
 }
 
-#id_name {
+#id_name, #id_colour {
     background-color: transparent;
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 36px;
     text-align: center;
     text-shadow: 2px 2px 8px rgb(128, 128, 128);
+    margin: 1vmin 0;
 }
+
+#id_duration, #id_url {
+    display: none;
+}
+
+#result label {
+    display: none;
+}
+
 
 .detail-page-sizing-text {
  

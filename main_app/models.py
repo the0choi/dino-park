@@ -1,18 +1,19 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+import random
 
-NAMES = (
-    (1, 'Doux'), 
-    (2, 'Kira'), 
-    (3, 'Kuro'), 
-    (4, 'Loki'), 
-    (5, 'Mono'), 
-    (6, 'Mort'), 
-    (7, 'Nico'), 
-    (8, 'Olaf'), 
-    (9, 'Tart'), 
-    (10, 'Vita')
+COLOURS = (
+    ('Blue', 'Blue'), 
+    ('Pink', 'Pink'), 
+    ('Grey', 'Grey'), 
+    ('Dark Blue', 'Dark Blue'), 
+    ('Light Grey', 'Light Grey'), 
+    ('Red', 'Red'), 
+    ('Orange', 'Orange'), 
+    ('Green', 'Green'), 
+    ('Yellow', 'Yellow'), 
+    ('Dark Green', 'Dark Green')
 )
 
 class Field(models.Model):
@@ -36,7 +37,11 @@ class Field(models.Model):
 class Dino(models.Model):
     name = models.CharField(
         max_length=20,
-        choices=NAMES
+        default="Dino"
+    )
+    colour = models.CharField(
+        choices=COLOURS,
+        default=1
     )
     duration = models.CharField(max_length=20)
     url = models.URLField(max_length=200)

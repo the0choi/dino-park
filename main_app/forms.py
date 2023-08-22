@@ -4,4 +4,4 @@ from .models import Dino
 class DinoForm(ModelForm):
   class Meta:
     model = Dino
-    fields = ['name']
+    fields = ['name', 'colour', 'duration']

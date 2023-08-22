@@ -4,6 +4,8 @@ const startEl = document.getElementById('start-timer');
 const pauseEl = document.getElementById('pause-timer');
 const cancelEl = document.getElementById('cancel-timer');
 const hatchEl = document.getElementById('result');
+const formDurationEl = document.getElementById('id_duration');
+const formColourEl = document.getElementById('id_colour');
 
 let countdownInterval;
 let isPaused = false;
@@ -14,7 +16,9 @@ function startCountdown(duration) {
     const mins = Math.floor(duration / 60);
     const secs = duration % 60;
     countdownEl.textContent = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    formDurationEl.value = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
     duration--;
+    formColour.placeholder = 'Name'
 
 
     countdownInterval = setInterval(() => {
@@ -60,6 +64,7 @@ cancelEl.addEventListener('click', () => {
     countdownEl.textContent = '00:00'; 
     hatchEl.classList.add('hidden'); 
     pauseEl.classList.add('hidden');
+    pauseEl.textContent = 'Pause';
     cancelEl.classList.add('hidden'); 
     startEl.classList.remove('hidden'); 
     durationEl.classList.remove('hidden'); 
