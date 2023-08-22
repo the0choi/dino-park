@@ -5,7 +5,6 @@ const pauseEl = document.getElementById('pause-timer');
 const cancelEl = document.getElementById('cancel-timer');
 const hatchEl = document.getElementById('result');
 const formDurationEl = document.getElementById('id_duration');
-const formColourEl = document.getElementById('id_colour');
 
 let countdownInterval;
 let isPaused = false;

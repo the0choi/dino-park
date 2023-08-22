@@ -2,27 +2,42 @@
 {% block content %}
 
 <div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
-    <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow spacing--detail">
+    <div class="border-solid border-white border-4 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow spacing--detail">
         <div class="flex flex-col justify-center items-center text-center">
-                <h1 class="detail-page-sizing-text">Dino Details</h1>
-                <p>Name: {{dino.name}}</p>
-                <p>
-                    {% if dino.colour|lower == 'dark green' %}
-                    Colour: <span style="color: #006400;"> {{ dino.colour }}</span>
+                <h1 class="text-4xl mb-3">Dino Details</h1>
+                <div class="bg-[url('https://i.imgur.com/ai7MsZ6.png')] bg-cover rounded-full p-4 border-solid border-4 border-white border-opacity-50 shadow-xl">
+                    <div class="relative">
+                        <img class="absolute top-0 left-0 z-1 drop-shadow-[0_0px_5px_rgba(255,255,255,0.4)]" src="{{ dino.url }}">
+                        <img class="z-2" src="https://i.imgur.com/A4Qdy25.png">
+                    </div>
+                </div>
+                <table class="">
+                    <tr>
+                        <th class="px-5 pt-5">Name</th>
+                        <th class="px-5 pt-5">Colour</th>
+                        <th class="px-5 pt-5">Session</th>
+                    </tr>
+                    <tr>
+                        <td class="pb-2">{{dino.name}}</td>
+                        <td class="pb-2">
+                            {% if dino.colour|lower == 'dark green' %}
+                    <span class="font-bold" style="color: #006400;"> {{ dino.colour }}</span>
                     {% elif dino.colour|lower == 'dark blue' %}
-                    Colour: <span style="color: #00008B;">{{ dino.colour }}</span>
+                    <span class="font-bold" style="color: #00008B;">{{ dino.colour }}</span>
                     {% elif dino.colour|lower == 'light grey' %}
-                    Colour: <span style="color: #D3D3D3;">{{ dino.colour }}</span>
+                    <span class="font-bold" style="color: #D3D3D3;">{{ dino.colour }}</span>
                     {% else %}
-                       Color: <span style="color: {{ dino.colour }}">{{ dino.colour }}</span>
+                       <span class="font-bold" style="color: {{ dino.colour }}">{{ dino.colour }}</span>
                     {% endif %}
-                </p>
-                <p>Session Duration: {{dino.duration}}</p>
-                <img class="img--size" src="{{ dino.url }}">
-                <div class="flex ">
-                    <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn" href="{% url 'dinos_update' dino.id %}">Edit</a>
+                        </td>
+                        <td class="pb-2">{{focus_time}} mins</td>
+                    </tr>
+                </table>
+            
+                <div class="flex items-center justify-center space-x-10">
+                    <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-blue-600 font-bold text-white mx-auto custom--btn border-4 border-white border-opacity-50 shadow-xl" href="{% url 'dinos_update' dino.id %}">Edit</a>
                     <br>
-                    <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn" href="{% url 'dinos_delete' dino.id %}">Delete</a>
+                    <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-4 border-white border-opacity-50 shadow-xl" href="{% url 'dinos_delete' dino.id %}">Delete</a>
                 </div>
         </div>
 
