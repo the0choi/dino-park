@@ -1,18 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20 custom-height">
-    <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow">
+<div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
+    <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow spacing--detail">
         <div class="flex flex-col justify-center items-center text-center ">
             <h1 class="detail-page-sizing-text">Edit</h1>
             <p>Dino Name: {{dino.name}}</p>
-            <img src="{{ dino.url }}">
+            <img class="img--size" src="{{ dino.url }}">
             <form action="" method="POST">
                 {% csrf_token %}
                 <table>
-                    {{ form.as_table }}
-                </table>
-                <input type="submit" value="Submit" class="custom--btn">
+                    <tbody>
+                        <tr>
+                            <th>
+                            <label class="label--spacing" for="id_name">Name:</label>
+                            </th>
+                            <td>
+                                <div class="input-box">
+                                    <input type="text" name="name" required class="text-shadow" id="id_name">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </tbody>
+                <input type="submit" value="Submit" class="spacer--2 custom--b custom--c text-shadow custom--Dino-font">
+                <a href="{% url 'dinos_detail' dino.id %}" class="custom--b custom--Dino-font">Cancel</a>
         </div>
 
     </div>

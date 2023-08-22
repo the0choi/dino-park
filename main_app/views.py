@@ -54,7 +54,10 @@ class FieldDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
-    return render(request, 'dinos/detail.html', {'dino': dino})
+    return render(request, 'dinos/detail.html', {
+        'dino': dino,
+    })
+
 
 class DinoUpdate(LoginRequiredMixin, UpdateView):
     model = Dino

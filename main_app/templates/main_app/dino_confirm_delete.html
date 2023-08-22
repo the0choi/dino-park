@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20 custom-height">
+<div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
     <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow">
-        <div class="flex flex-col justify-center items-center text-center ">
-            <h1 class="detail-page-sizing-text">Delete</h1>
-           <p>are you sure you want to Delete {{ object.name }}?</p>
-            <img src="{{ dino.url }}">
+        <div class="flex flex-col justify-center items-center text-center spacing--detail">
+            <h1>Delete</h1>
+           <p>are you sure you want to Delete <span class="colored-text">{{ object.name }}</span> ?</p>
+            <img class="img--size" src="{{ dino.url }}">
             <form action="" method="POST">
                 {% csrf_token %}
-                <input type="submit" value="Yes - Delete!" class="custom--btn">
-                <a href="{% url 'dinos_detail' dino.id %}" class="custom--btn">Cancel</a>
+                <div class="delete--form">
+                    <input type="submit" value="Yes - Delete!" class="custom--b custom--c text-shadow custom--Dino-font">
+                    <a href="{% url 'dinos_detail' dino.id %}" class="custom--b custom--Dino-font">Cancel</a>
+                </div>
               </form>
         </div>
 
