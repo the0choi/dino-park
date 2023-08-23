@@ -94,6 +94,7 @@ def add_dino(request, field_id):
 @login_required
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
+    field = dino.field
     animations = dino.animations.all()
 
     # Calculates total focus time
@@ -102,6 +103,7 @@ def dinos_detail(request, dino_id):
 
     return render(request, 'dinos/detail.html', {
         'dino': dino,
+        'field': field,
         'focus_time': focus_time,
         'animations': animations,
         'DINO_ACTION': DINO_ACTION,
