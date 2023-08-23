@@ -8,51 +8,53 @@
             <p>Today's Date: {{  current_date|date }}</p>
             <p><br>View all your parks here. Dinos can only be hatched in<br> today's park, so get hatching as soon as possible!</p>
 
-            <div class="border-2 border-white rounded-xl mt-8 px-10 pt-8 pb-4 bg-gray-600">
-                <p>Total focus time over past 7 days (minutes)</p>
-                <div id="parks-graph" class="h-40 w-50 my-2"></div>
-            </div>
+            {% if fields.all|length >= 7 %}
+                <div class="border-2 border-white rounded-xl mt-8 px-10 pt-8 pb-4 bg-gray-600">
+                    <p>Total focus time over past 7 parks (mins)</p>
+                    <div id="parks-graph" class="h-40 w-50 my-2"></div>
+                </div>
 
-            <script>
-                const focusTimes = [
-                    {% for item in focus_times %}
-                        ['{{ item.0 }}', '{{ item.1 }}'],
-                    {% endfor %}
-                ];
+                <script>
+                    const focusTimes = [
+                        {% for item in focus_times %}
+                            ['{{ item.0 }}', '{{ item.1 }}'],
+                        {% endfor %}
+                    ];
 
-                const trace = {x: [], y: [], type: 'scatter', line: {color: 'rgb(255, 255, 255)', width: 3}};
+                    const trace = {x: [], y: [], type: 'scatter', line: {color: 'rgb(255, 255, 255)', width: 3}};
 
-                for (let i = 6; i >= 0; i--) {
-                    trace.x.push(focusTimes[i][0])
-                    trace.y.push(focusTimes[i][1])
-                };
-            
-                const data = [trace];
-            
-                const layout = {
-                    margin: {
-                    l: 10, 
-                    r: 10, 
-                    t: 10,
-                    b: 20 
-                    },
-                    xaxis: {
-                    automargin: true,
-                    gridcolor: 'rgb(107, 114, 128)',
-                    },
-                    yaxis: {
-                    automargin: true,
-                    gridcolor: 'rgb(107, 114, 128)',
-                    },
-                    font: {
-                    color: 'white'
-                    },
-                    plot_bgcolor: 'rgba(48, 55, 64, 0)',
-                    paper_bgcolor: 'rgba(48, 55, 64, 0)'
-                };
-            
-                Plotly.newPlot('parks-graph', data, layout, {staticPlot: true});
-            </script>
+                    for (let i = 6; i >= 0; i--) {
+                        trace.x.push(focusTimes[i][0])
+                        trace.y.push(focusTimes[i][1])
+                    };
+                
+                    const data = [trace];
+                
+                    const layout = {
+                        margin: {
+                        l: 10, 
+                        r: 10, 
+                        t: 10,
+                        b: 20 
+                        },
+                        xaxis: {
+                        automargin: true,
+                        gridcolor: 'rgb(107, 114, 128)',
+                        },
+                        yaxis: {
+                        automargin: true,
+                        gridcolor: 'rgb(107, 114, 128)',
+                        },
+                        font: {
+                        color: 'white'
+                        },
+                        plot_bgcolor: 'rgba(48, 55, 64, 0)',
+                        paper_bgcolor: 'rgba(48, 55, 64, 0)'
+                    };
+                
+                    Plotly.newPlot('parks-graph', data, layout, {staticPlot: true});
+                </script>
+            {% endif %}
 
             <div class="rounded-lg mt-10 max-h-96 overflow-y-auto border-2 border-white border-opacity-50">
                 <table class="table-auto w-full text-sm text-left text-gray-400">

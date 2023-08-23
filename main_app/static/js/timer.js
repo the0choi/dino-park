@@ -34,6 +34,7 @@ function startCountdown(duration) {
                 pauseEl.classList.add('hidden');
                 cancelEl.classList.add('hidden');
                 hatchEl.classList.remove('hidden');
+                document.title = `Dino Park`;
             }
         }
     }, 1000);
@@ -67,5 +68,6 @@ cancelEl.addEventListener('click', () => {
     cancelEl.classList.add('hidden'); 
     startEl.classList.remove('hidden'); 
     durationEl.classList.remove('hidden'); 
+    document.title = `Dino Park`;
     isPaused = false;
 });
