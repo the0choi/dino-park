@@ -65,12 +65,7 @@ class Dino(models.Model):
     duration = models.CharField(max_length=20)
     url = models.URLField(max_length=200)
     field = models.ForeignKey(Field, on_delete=models.CASCADE)
-    animation_collection = models.ManyToManyField(
-        'Animation',
-        choices=ACTIONS,
-        default=1
-    )
-    
+    animation_collection = models.ManyToManyField('Animation', related_name='dinos')
 
     def __str__(self):
         return f'{self.duration} ({self.id})'

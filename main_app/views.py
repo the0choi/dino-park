@@ -4,7 +4,7 @@ from django.db.models import F
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Field, Dino
+from .models import Field, Dino, Animation
 from .forms import DinoForm
 from django.urls import reverse_lazy
 from django.contrib.auth import login
@@ -107,6 +107,7 @@ def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
     field = dino.field
     animations = dino.animations.all()
+    actions_dino_doesnt_have = Animation.objects.exclude(id__in=dino.animation_collection.all())
 
     # Calculates total focus time
     mins, secs = map(int, dino.duration.split(":"))
@@ -118,6 +119,7 @@ def dinos_detail(request, dino_id):
         'focus_time': focus_time,
         'animations': animations,
         'DINO_ACTION': DINO_ACTION,
+        'actions': actions_dino_doesnt_have
         })
 
 
@@ -145,6 +147,19 @@ class DinoDelete(LoginRequiredMixin, DeleteView):
         field = self.object.field
         return reverse_lazy('fields_detail', kwargs={'field_id': field.id})
 
+@login_required
+def assoc_action(request, dino_id, animation_id):
+    dino = Dino.objects.get(id=dino_id)
+    animation = Animation.objects.get(id=animation_id)
+    dino.animation_collection.add(animation)
+    return redirect('dinos_detail', dino_id=dino_id)
+
+@login_required
+def unassoc_action(request, dino_id, animation_id):
+    dino = Dino.objects.get(id=dino_id)
+    animation = Animation.objects.get(id=animation_id)
+    dino.animation_collection.remove(animation)
+    return redirect('dinos_detail', dino_id=dino_id)
 
 def signup(request):
     error_message = ''
