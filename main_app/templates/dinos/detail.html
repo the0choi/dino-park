@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
-    <div class="border-solid border-white border-4 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow spacing--detail">
+    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#009954] px-40 text-shadow spacing--detail">
         <div class="flex flex-col justify-center items-center text-center">
                 <h1 class="text-4xl mb-3">Dino Details</h1>
                 <div class="bg-[url('https://i.imgur.com/ai7MsZ6.png')] bg-cover rounded-full p-4 border-solid border-4 border-white border-opacity-50 shadow-xl">
@@ -39,7 +39,7 @@
                     <br>
                     <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'dinos_delete' dino.id %}">Delete</a>
                     <br>
-                    <a class="h-12 px-5 py-2 mt-5 rounded-full bg-green-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'fields_detail' field.id %}">Return</a>
+                    <a class="h-12 px-5 py-2 mt-5 rounded-full bg-yellow-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'fields_detail' field.id %}">Return</a>
                 </div>
         </div>
 

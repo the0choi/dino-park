@@ -73,8 +73,13 @@
                     <p>Your park is full! Delete some dinos to keep hatching.</p>
                 </div>
             {% endif %}
+            
+            <div class="flex items-center justify-center space-x-10">
+                <a class="h-12 items-center justify-center px-5 py-2 mt-10 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50" href="{% url 'fields_delete' field.id %}">Delete Park</a>
 
-            <a class="h-12 items-center justify-center px-5 py-2 mt-10 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50" href="{% url 'fields_delete' field.id %}">Delete Park</a>
+                <a class="h-12 items-center justify-center px-5 py-2 mt-10 rounded-full bg-yellow-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50" href="{% url 'fields_index' %}">Return</a>
+            </div>
+            
 
         </div>
     </div>

@@ -38,9 +38,20 @@ def about(request):
 
 @login_required
 def fields_index(request):
-    fields = Field.objects.filter(user=request.user)
+    fields = Field.objects.filter(user=request.user).order_by('-date')
+    total_duration = Dino.objects.filter(field_id=field_id, field__user_id=user_id).aggregate(total_duration=Sum('duration'))
+
+
+    focus_times = []
+    for field in fields:
+        total_secs = 0
+        for dino in field.dino_set.all():
+            mins, secs = map(int, dino.duration.split(":"))
+            total_secs += mins * 60 + secs
+        focus_times.append(f'{total_secs // 60}')
+
     current_date = datetime.datetime.now()
-    return render(request, 'fields/index.html', {'fields': fields, 'current_date': current_date})
+    return render(request, 'fields/index.html', {'fields': fields, 'current_date': current_date, 'focus_times': focus_times})
 
 
 @login_required

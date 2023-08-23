@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="custom--main h-screen -mt-20 text-shadow">
-    <div class="wrapper bg-black bg-opacity-5">
+    <div class="wrapper border-4 bg-black bg-opacity-5">
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             <h1>Login</h1>
