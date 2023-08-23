@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="w-2/3 mx-auto flex items-center justify-center -mt-60 custom-height--2">
-    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#58a11a] px-40 text-shadow mb-10">
+    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#009954] px-40 text-shadow mb-10">
         <div class="flex flex-col justify-center items-center text-center">
             <h1 class="text-4xl">Park for {{ field.date }}</h1>
 
@@ -25,15 +25,13 @@
                         <div class="tile"></div>
                     {% endfor %}
                 </div>
-                
             </div>
-            
 
-            {% if field.get_dinos.all|length < 25 %}
-                <div class="flex justify-center items-center h-70 border-solid border-4 border-white border-opacity-50 p-10 rounded-xl space-x-10 bg-gray-500">
+            {% if current_date|date == field.date|date and field.get_dinos.all|length < 25 %}
+                <div class="flex justify-center items-center h-70 border-solid border-4 border-black border-opacity-50 p-10 rounded-xl space-x-10 bg-[url('https://i.imgur.com/5OGe5Z4.png')] drop-shadow-2xl">
                     <div>
                         <div id="countdown" class="font-bold text-7xl">00:00</div>
-                        <select id="timer-length" class="bg-transparent border-2 border-white border-opacity-50 rounded-full w-full text-center my-3 text-shadow">
+                        <select id="timer-length" class="bg-transparent backdrop-blur-xl border-2 border-white border-opacity-50 rounded-full w-full text-center my-3 text-shadow">
                             <option value="5">5 seconds (DEMO)</option>
                             <option value="300">5 minutes</option>
                             <option value="600">10 minutes</option>
@@ -48,16 +46,16 @@
                             <option value="3300">55 minutes</option>
                             <option value="3600">60 minutes</option>
                         </select>
-                        <button id="start-timer" class="flex h-12 items-center justify-center mx-auto px-5 rounded-full bg-red-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl">Start</button>
+                        <button id="start-timer" class="flex h-12 items-center justify-center mx-auto px-5 rounded-full bg-blue-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl">Start</button>
                         <div class="flex justify-center items-center">
-                            <button id="pause-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-red-600 font-bold custom--btn inline-block hidden border-2 border-white border-opacity-50 shadow-xl">Pause</button>
+                            <button id="pause-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-blue-600 font-bold custom--btn inline-block hidden border-2 border-white border-opacity-50 shadow-xl">Pause</button>
                         <button id="cancel-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-red-600 font-bold custom--btn inline-block hidden border-2 border-white border-opacity-50 shadow-xl">Cancel</button>
                         </div>
                         <form action="{% url 'add_dino' field.id %}" method="POST" class="flex flex-col items-center justify-center hidden" id="result">
                             {% csrf_token %}
                             {{ dino_form }}
                             
-                            <input type="submit" class="flex h-12 items-center justify-center mt-5 mx-auto px-5 rounded-full bg-red-600 font-bold custom--btn" value="Hatch Egg">
+                            <input type="submit" class="flex h-12 items-center justify-center mt-5 mx-auto px-5 rounded-full bg-yellow-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl" value="Hatch Egg">
                         </form>
                     </div>
                     <div class="">
@@ -70,13 +68,13 @@
                     </div>
 
                 </div>
-            {% else %}
-                <div class="flex justify-center items-center h-70 border-solid border-2 border-white border-opacity-50 p-10 rounded-xl space-x-10 bg-blue-600">
+            {% elif current_date|date == field.date|date and field.get_dinos.all|length >= 25 %}
+                <div class="flex justify-center items-center h-70 border-solid border-4 border-black border-opacity-50 p-8 rounded-xl space-x-10 bg-[url('https://i.imgur.com/5OGe5Z4.png')] drop-shadow-2xl">
                     <p>Your park is full! Delete some dinos to keep hatching.</p>
                 </div>
             {% endif %}
 
-            
+            <a class="h-12 items-center justify-center px-5 py-2 mt-10 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50" href="{% url 'fields_delete' field.id %}">Delete Park</a>
 
         </div>
     </div>

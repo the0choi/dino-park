@@ -232,9 +232,6 @@ a {
     width: 41px;
     height: 247px;
     background-image: url(https://i.imgur.com/DKd4O9P.png);
-    border-top: 1px solid rgba(0, 0, 0, 0.4);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    border-right: 1px solid rgba(0, 0, 0, 0.4);
     transform: rotateZ(90deg) skew(27deg) translate(274px, -278px);
 }
 
@@ -244,8 +241,6 @@ a {
     width: 40px;
     height: 248px;
     background-image: url(https://i.imgur.com/DKd4O9P.png);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    border-right: 1px solid rgba(0, 0, 0, 0.4);
     transform: rotateZ(90deg) skew(-27deg) translate(116px, -32px);
 }
 
@@ -296,6 +291,12 @@ input {
     text-align: center;
     text-shadow: 2px 2px 8px rgb(128, 128, 128);
     margin: 1vmin 0;
+    backdrop-filter: blur(24px);
+    width: 100%;
+}
+
+#id_colour {
+    padding-left: 40px;
 }
 
 #id_duration, #id_url {
