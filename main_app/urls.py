@@ -12,6 +12,8 @@ urlpatterns = [
     path('dinos/<int:dino_id>/', views.dinos_detail, name='dinos_detail'),
     path('Dinos/<int:pk>/update/', views.DinoUpdate.as_view(), name='dinos_update'),
     path('Dinos/<int:pk>/delete/', views.DinoDelete.as_view(), name='dinos_delete'),
+    path('dinos/<int:dino_id>/assoc_action/<int:animation_id>/', views.assoc_action, name='assoc_action'),
+    path('dinos/<int:dino_id>/unassoc_action/<int:animation_id>/', views.unassoc_action, name='unassoc_action'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.signup, name='signup'),
 ]
