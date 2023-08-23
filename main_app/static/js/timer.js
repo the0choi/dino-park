@@ -17,6 +17,7 @@ function startCountdown(duration) {
     countdownEl.textContent = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
     formDurationEl.value = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
     duration--;
+    document.title = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs} - Dino Park`;
 
 
     countdownInterval = setInterval(() => {
@@ -24,6 +25,7 @@ function startCountdown(duration) {
             const mins = Math.floor(duration / 60);
             const secs = duration % 60;
             countdownEl.textContent = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            document.title = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs} - Dino Park`;
             duration--;
 
             if (duration < 0) {
