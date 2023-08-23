@@ -205,13 +205,39 @@ a {
   }
 }
 
-.isometric {
-  width: 45vmin;
-  height: 45vmin;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  transform: rotateX(60deg) rotateZ(45deg);
+.isometric-cube {
+    position: relative;
+    width: 300px;
+    height: 350px;
+}
+
+.isometric-top {
+    transform-origin: center;
+    transform: rotateX(60deg) rotateZ(45deg);
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.isometric-side-1 {
+    transform-origin: center;
+    position: absolute;
+    width: 50px;
+    height: 212px;
+    background-image: url(https://i.imgur.com/8om8d4E.png);
+    transform: rotateZ(90deg) skew(27deg) translate(239px, -230px);
+}
+
+.isometric-side-2 {
+    transform-origin: center;
+    position: absolute;
+    width: 50px;
+    height: 212px;
+    background-image: url(https://i.imgur.com/8om8d4E.png);
+    transform: rotateZ(90deg) skew(-27deg) translate(112px, -20px);
 }
 
 .tile {
@@ -271,24 +297,13 @@ input {
     display: none;
 }
 
-
-.detail-page-sizing-text {
-  font-size: 24px;
-  padding-bottom: 20px;
-}
-
-.spacing--detail p,
-a {
-  padding: 5px;
-  font-size: 20px;
-}
-.spacing--detail h1 {
-  font-size: 30px;
+#dino-form label {
+    display: none;
 }
 
 .img--size {
-  width: 100px;
-  height: 100px;
+  width: 96px;
+  height: 96px;
 }
 
 .spacer--1 {
@@ -311,11 +326,6 @@ a {
 
 .custom--c {
   padding-right: 1000px;
-}
-
-.delete--form {
-  display: inline-flex;
-  
 }
 
 .custom--return {

@@ -95,11 +95,17 @@ def add_dino(request, field_id):
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
     animations = dino.animations.all()
+
+    # Calculates total focus time
+    mins, secs = map(int, dino.duration.split(":"))
+    focus_time = f'{(mins * 60 + secs) // 60}'
+
     return render(request, 'dinos/detail.html', {
         'dino': dino,
+        'focus_time': focus_time,
         'animations': animations,
-        'DINO_ACTION': DINO_ACTION
-    })
+        'DINO_ACTION': DINO_ACTION,
+        })
 
 
 class DinoUpdate(LoginRequiredMixin, UpdateView):
