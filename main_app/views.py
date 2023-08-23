@@ -25,7 +25,7 @@ DINO_URLS = {
     ('Dark Green', 'https://i.imgur.com/QRnJ2Fu.gif')
 }
 DINO_ACTION = {
-
+    ('DEAD', 'https://i.imgur.com/dikM05s.gif')
 }
 
 def home(request):
