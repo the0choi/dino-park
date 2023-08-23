@@ -16,6 +16,18 @@ COLOURS = (
     ('Dark Green', 'Dark Green')
 )
 
+ACTIONS = (
+    ('IDLE', 'Idle'),
+    ('MOVE', 'Move'),
+    ('KICK', 'Kick'),
+    ('HURT', 'Hurt'),
+    ('DASH', 'Dash'),
+    ('BITE', 'Bite'),
+    ('DEAD', 'dead'),
+    ('JUMP', 'Jump'),
+
+)
+
 class Field(models.Model):
     date = models.DateField('Date', unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -33,6 +45,13 @@ class Field(models.Model):
     def get_absolute_url(self):
         return reverse('fields_detail', kwargs={'field_id': self.id})
 
+class Animation(models.Model):
+    action = models.CharField(max_length=50)
+    url = models.URLField()
+    dino_colour = models.ForeignKey('Dino', on_delete=models.CASCADE, related_name='animations')
+
+    def __str__(self):
+        return self.action
 
 class Dino(models.Model):
     name = models.CharField(
@@ -46,9 +65,17 @@ class Dino(models.Model):
     duration = models.CharField(max_length=20)
     url = models.URLField(max_length=200)
     field = models.ForeignKey(Field, on_delete=models.CASCADE)
+    animation_collection = models.ManyToManyField(
+        'Animation',
+        choices=ACTIONS,
+        default=1
+    )
+    
 
     def __str__(self):
         return f'{self.duration} ({self.id})'
 
     def get_absolute_url(self):
         return reverse('dinos_detail', kwargs={'dino_id': self.id})
+
+

@@ -24,6 +24,9 @@ DINO_URLS = {
     ('Yellow', 'https://i.imgur.com/Ptsxyuv.gif'), 
     ('Dark Green', 'https://i.imgur.com/QRnJ2Fu.gif')
 }
+DINO_ACTION = {
+    ('DEAD', 'https://i.imgur.com/dikM05s.gif')
+}
 
 def home(request):
     return render(request, 'home.html')
@@ -82,18 +85,27 @@ def add_dino(request, field_id):
                 new_dino.url = url
 
         new_dino.save()
+
+
+
     return redirect('fields_detail', field_id=field_id)
 
 
 @login_required
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
+    animations = dino.animations.all()
 
     # Calculates total focus time
     mins, secs = map(int, dino.duration.split(":"))
     focus_time = f'{(mins * 60 + secs) // 60}'
 
-    return render(request, 'dinos/detail.html', {'dino': dino, 'focus_time': focus_time})
+    return render(request, 'dinos/detail.html', {
+        'dino': dino,
+        'focus_time': focus_time,
+        'animations': animations,
+        'DINO_ACTION': DINO_ACTION,
+        })
 
 
 class DinoUpdate(LoginRequiredMixin, UpdateView):
@@ -108,6 +120,8 @@ class DinoUpdate(LoginRequiredMixin, UpdateView):
                 dino.url = url
                 break
         dino.save()
+        
+        
         return redirect('dinos_detail', dino.id)
     
 
