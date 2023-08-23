@@ -757,6 +757,11 @@ select {
   margin-bottom: 2rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .-mt-20 {
   margin-top: -5rem;
 }
@@ -875,6 +880,10 @@ select {
 
 .h-6 {
   height: 1.5rem;
+}
+
+.h-40 {
+  height: 10rem;
 }
 
 .max-h-96 {
@@ -1062,6 +1071,11 @@ select {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
@@ -1088,8 +1102,18 @@ select {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-\[\#a36f49\] {
+  --tw-gradient-from: #a36f49 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(163 111 73 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .to-\[\#009954\] {
   --tw-gradient-to: #009954 var(--tw-gradient-to-position);
+}
+
+.to-\[\#8c6549\] {
+  --tw-gradient-to: #8c6549 var(--tw-gradient-to-position);
 }
 
 .bg-cover {
@@ -1148,6 +1172,11 @@ select {
   padding-bottom: 1rem;
 }
 
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -1166,6 +1195,14 @@ select {
 
 .pl-8 {
   padding-left: 2rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-left {
@@ -1278,6 +1315,11 @@ select {
 .hover\:bg-gray-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
 .hover\:underline:hover {
