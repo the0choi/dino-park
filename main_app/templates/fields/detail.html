@@ -28,7 +28,7 @@
             </div>
 
             {% if current_date|date == field.date|date and field.get_dinos.all|length < 25 %}
-                <div class="flex justify-center items-center h-70 border-solid border-4 border-black border-opacity-50 p-10 rounded-xl space-x-10 bg-[url('https://i.imgur.com/5OGe5Z4.png')] bg-cover drop-shadow-2xl">
+                <div class="flex justify-center items-center h-70 border-solid border-4 border-white border-opacity-50 p-10 rounded-xl space-x-10 bg-gradient-to-b from-[#a36f49] to-[#8c6549] drop-shadow-2xl">
                     <div>
                         <div id="countdown" class="font-bold text-7xl">00:00</div>
                         <select id="timer-length" class="bg-transparent backdrop-blur-xl border-2 border-white border-opacity-50 rounded-full w-full text-center my-3 text-shadow">
@@ -69,7 +69,7 @@
 
                 </div>
             {% elif current_date|date == field.date|date and field.get_dinos.all|length >= 25 %}
-                <div class="flex justify-center items-center h-70 border-solid border-4 border-black border-opacity-50 p-8 rounded-xl space-x-10 bg-[url('https://i.imgur.com/5OGe5Z4.png')] drop-shadow-2xl">
+                <div class="flex justify-center items-center h-70 border-solid border-4 border-black border-opacity-50 p-8 rounded-xl space-x-10 bg-gradient-to-b from-[#a36f49] to-[#8c6549] drop-shadow-2xl">
                     <p>Your park is full! Delete some dinos to keep hatching.</p>
                 </div>
             {% endif %}

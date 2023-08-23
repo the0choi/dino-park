@@ -31,6 +31,7 @@ ACTIONS = (
 class Field(models.Model):
     date = models.DateField('Date', unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    duration = models.CharField(default='0')
 
     def get_dinos(self):
         return Dino.objects.filter(field=self)
