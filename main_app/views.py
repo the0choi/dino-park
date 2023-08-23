@@ -24,6 +24,9 @@ DINO_URLS = {
     ('Yellow', 'https://i.imgur.com/Ptsxyuv.gif'), 
     ('Dark Green', 'https://i.imgur.com/QRnJ2Fu.gif')
 }
+DINO_ACTION = {
+
+}
 
 def home(request):
     return render(request, 'home.html')
@@ -82,14 +85,20 @@ def add_dino(request, field_id):
                 new_dino.url = url
 
         new_dino.save()
+
+
+
     return redirect('fields_detail', field_id=field_id)
 
 
 @login_required
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
+    animations = dino.animations.all()
     return render(request, 'dinos/detail.html', {
         'dino': dino,
+        'animations': animations,
+        'DINO_ACTION': DINO_ACTION
     })
 
 
@@ -105,6 +114,8 @@ class DinoUpdate(LoginRequiredMixin, UpdateView):
                 dino.url = url
                 break
         dino.save()
+        
+        
         return redirect('dinos_detail', dino.id)
     
 
