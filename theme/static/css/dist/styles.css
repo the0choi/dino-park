@@ -724,6 +724,14 @@ select {
   top: 0.25rem;
 }
 
+.right-0 {
+  right: 0px;
+}
+
+.float-right {
+  float: right;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -811,6 +819,18 @@ select {
 
 .mb-20 {
   margin-bottom: 5rem;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.ml-8 {
+  margin-left: 2rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
 }
 
 .block {
@@ -1138,6 +1158,14 @@ select {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
+}
+
+.pl-8 {
+  padding-left: 2rem;
 }
 
 .text-left {

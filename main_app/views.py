@@ -25,7 +25,7 @@ DINO_URLS = {
     ('Dark Green', 'https://i.imgur.com/QRnJ2Fu.gif')
 }
 DINO_ACTION = {
-    ('DEAD', 'https://i.imgur.com/dikM05s.gif')
+    ('DEAD', 'https://img.itch.zone/aW1nLzcyMDM5NjIuZ2lm/original/%2F1n6e%2B.gif')
 }
 
 def home(request):
@@ -85,8 +85,6 @@ def add_dino(request, field_id):
                 new_dino.url = url
 
         new_dino.save()
-
-
 
     return redirect('fields_detail', field_id=field_id)
 
