@@ -52,7 +52,7 @@ class Animation(models.Model):
     dino_colour = models.ForeignKey('Dino', on_delete=models.CASCADE, related_name='animations')
 
     def __str__(self):
-        return self.action
+        return self.get_action_display()
 
 class Dino(models.Model):
     name = models.CharField(
