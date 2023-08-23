@@ -340,19 +340,11 @@ input {
 
 .custom--return {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  font-family: "Broken Console", sans-serif;
+  top: 0;
+  left: 0;
+  font-size: 20px;
 }
 
 .custom--Dino-font {
   font-family: "Broken Console", sans-serif;
-}
-
-.dino-color-darkgreen {
-  color: #006400; /* Dark Green */
-}
-
-.dino-color-darkblue {
-  color: #00008B; /* Dark Blue */
 }
