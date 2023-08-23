@@ -207,42 +207,51 @@ a {
 
 .isometric-cube {
     position: relative;
-    width: 300px;
+    width: 350px;
     height: 350px;
+    margin-bottom: 5vmin;
+    filter: drop-shadow(0 0 2vmin rgba(0, 0, 0, 0.3));
 }
 
 .isometric-top {
     transform-origin: center;
     transform: rotateX(60deg) rotateZ(45deg);
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
+    z-index: 10;
 }
 
 .isometric-side-1 {
     transform-origin: center;
     position: absolute;
-    width: 50px;
-    height: 212px;
-    background-image: url(https://i.imgur.com/8om8d4E.png);
-    transform: rotateZ(90deg) skew(27deg) translate(239px, -230px);
+    width: 41px;
+    height: 247px;
+    background-image: url(https://i.imgur.com/DKd4O9P.png);
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    transform: rotateZ(90deg) skew(27deg) translate(274px, -278px);
 }
 
 .isometric-side-2 {
     transform-origin: center;
     position: absolute;
-    width: 50px;
-    height: 212px;
-    background-image: url(https://i.imgur.com/8om8d4E.png);
-    transform: rotateZ(90deg) skew(-27deg) translate(112px, -20px);
+    width: 40px;
+    height: 248px;
+    background-image: url(https://i.imgur.com/DKd4O9P.png);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    transform: rotateZ(90deg) skew(-27deg) translate(116px, -32px);
 }
 
 .tile {
   border: 1px solid rgba(255, 255, 255, 0.4);
-  background-image: url(https://i.imgur.com/8om8d4E.png);
+  background-image: url(https://i.imgur.com/P5CbHD7.png);
   background-size: 123%;
   background-position: center;
   position: relative;
@@ -253,8 +262,8 @@ a {
   width: 60%;
   transform: rotateZ(-45deg);
   position: absolute;
-  top: -4vmin;
-  left: -1vmin;
+  top: -27px;
+  left: -6px;
 }
 
 .custom-height {

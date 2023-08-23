@@ -2,18 +2,21 @@
 {% block content %}
 
 <div class="w-2/3 mx-auto flex items-center justify-center -mt-60 custom-height--2">
-    <div class="border-solid border-white border-2 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-green-700 px-40 text-shadow mb-10">
+    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#58a11a] px-40 text-shadow mb-10">
         <div class="flex flex-col justify-center items-center text-center">
             <h1 class="text-4xl">Park for {{ field.date }}</h1>
 
             <p>Total focus time: {{ focus_time }} minutes</p>
 
             <div class="isometric-cube">
+                <div class="isometric-side-1"></div>
+                <div class="isometric-side-2"></div>
                 <div class="isometric-top" id="isometric">
                     {% for dino in field.get_dinos %}
                         <div class="tile">
                             <a href="{% url 'dinos_detail' dino.id %}">
                                 <img src="{{ dino.url }}" draggable="false" alt="{{ dino.name }}" />
+                                <div class="hidden"> </div>
                             </a>
                         </div>
                     {% endfor %}
@@ -22,13 +25,12 @@
                         <div class="tile"></div>
                     {% endfor %}
                 </div>
-                <div class="isometric-side-1"></div>
-                <div class="isometric-side-2"></div>
+                
             </div>
             
 
             {% if field.get_dinos.all|length < 25 %}
-                <div class="flex justify-center items-center h-70 border-solid border-2 border-white border-opacity-50 p-10 rounded-xl space-x-10 bg-blue-600">
+                <div class="flex justify-center items-center h-70 border-solid border-4 border-white border-opacity-50 p-10 rounded-xl space-x-10 bg-gray-500">
                     <div>
                         <div id="countdown" class="font-bold text-7xl">00:00</div>
                         <select id="timer-length" class="bg-transparent border-2 border-white border-opacity-50 rounded-full w-full text-center my-3 text-shadow">
