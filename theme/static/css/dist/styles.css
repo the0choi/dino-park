@@ -864,6 +864,14 @@ select {
   margin-top: 4rem;
 }
 
+.ml-0 {
+  margin-left: 0px;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -930,6 +938,14 @@ select {
 
 .h-36 {
   height: 9rem;
+}
+
+.h-0 {
+  height: 0px;
+}
+
+.h-80 {
+  height: 20rem;
 }
 
 .max-h-96 {

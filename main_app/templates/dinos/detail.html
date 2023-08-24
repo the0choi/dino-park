@@ -2,9 +2,11 @@
 {% block content %}
 
 <div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
-    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#009954] px-40 text-shadow spacing--detail">
-        <div class="flex flex-col justify-center items-center text-center">
-                <h1 class="text-4xl mb-3">Dino Details</h1>
+    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#009954] px-20 text-shadow spacing--detail">
+        <h1 class="text-4xl mb-3 text-center mx-auto">Dino Details</h1>
+        
+        <div class="flex justify-center items-center space-x-10">
+            <div class="flex flex-col justify-center items-center text-center">
                 <div class="bg-[url('https://i.imgur.com/ai7MsZ6.png')] bg-cover rounded-full p-4 border-solid border-4 border-white border-opacity-50 shadow-xl">
                     <div class="relative">
                         <img class="absolute top-0 left-0 z-1 drop-shadow-[0_0px_5px_rgba(255,255,255,0.4)]" src="{{ dino.url }}">
@@ -27,13 +29,12 @@
                     {% elif dino.colour|lower == 'light grey' %}
                     <span class="font-bold" style="color: #D3D3D3;">{{ dino.colour }}</span>
                     {% else %}
-                       <span class="font-bold" style="color: {{ dino.colour }}">{{ dino.colour }}</span>
+                        <span class="font-bold" style="color: {{ dino.colour }}">{{ dino.colour }}</span>
                     {% endif %}
                         </td>
                         <td class="pb-2">{{focus_time}} mins</td>
                     </tr>
                 </table>
-            
                 <div class="flex items-center justify-center space-x-10">
                     <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-blue-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'dinos_update' dino.id %}">Edit</a>
                     <br>
@@ -41,40 +42,38 @@
                     <br>
                     <a class="h-12 px-5 py-2 mt-5 rounded-full bg-yellow-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'fields_detail' field.id %}">Return</a>
                 </div>
-        </div>
-
-    </div>
-    <section class="mx-auto text-center">
-        <div class="border-solid border-white border-4 border-opacity-20 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-black bg-opacity-5 px-40 text-shadow spacing--detail float-right ml-auto ml-4">
-            <h1 class="text-4xl mb-3">Animations</h1>
-  <ul>
-    {% for animation in dino.animation_collection.all %}
-      <li>{{ animation.action }} - <img src="{{ animation.url }}" alt="{{ animation.action }}" width="100"></li>
-    {% endfor %}
-  </ul>
- <p>Available Actions:</p>
-  <ul>
-    {% for action in actions %}
-      <li>
-        {{ action.action }}
-        <a href="{% url 'assoc_action' dino.id action.id %}">Associate</a>
-      </li>
-    {% endfor %}
-  </ul>
-  <h3>Actions Not Associated:</h3>
-  <ul>
-    {% for action in actions_dino_doesnt_have %}
-      <li>
-        {{ action.action }}
-        <a href="{% url 'assoc_action' dino.id action.id %}">Associate</a>
-      </li>
-    {% endfor %}
-  </ul>
-                
             </div>
-        </h1>
-     </section>
- </div>
 
+            <div class="h-96 border-white border-2 border-opacity-50"></div>
+
+            <div class="flex flex-col justify-center items-center text-center">
+                <p>Available Actions:</p>
+                {% if dino.animations.count %}
+                    {% for animation in dino.animations.all %}
+                        <p>Action: {{ animation }}</p>
+                        <form action="{% url 'unassoc_animation' dino.id animation.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Remove</button>
+                        </form>
+                    {% endfor %}
+                {% else %}
+                <p>No Actions</p>
+                {% endif %}
+                
+                <p>Actions To Add:</p>
+                {% if available_animations.count %}
+                    {% for animation in available_animations.all %}
+                    <p>{{ animation }}</p>
+                    <form action="{% url 'assoc_animation' dino.id animation.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Add</button>
+                    </form>
+                    {% endfor %}
+                {% else %}
+                    <p>All available actions have been added</p>
+                {% endif %}
+            </div>
+        </div>       
+    </div>
 
 {% endblock %}
