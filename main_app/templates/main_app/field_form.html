@@ -2,14 +2,21 @@
 
 {% block content %}
 
+<!-- Main content section -->
 <div class="custom--main h-screen -mt-20">
+    <!-- Container for the form -->
     <div class="wrapper border-4 text-shadow bg-black bg-opacity-5">
+        <!-- Heading for the form section -->
         <h1 class="mb-5">Add Park</h1>
+        <!-- Form for adding a park -->
         <form action="" method="POST" class="flex flex-col items-center justify-center">
             {% csrf_token %}
+            <!-- Date input field -->
             <input type="date" name="{{ form.date.name }}" id="{{ form.date.id_for_label }}" value="{{ form.date.value|default:'' }}" class="bg-transparent border-2 border-white border-opacity-20 rounded-full w-full text-center text-shadow">
+            <!-- Submit button for adding a park -->
             <input type="submit" value="Add" class="custom--btn mt-10">
         </form>
+        <!-- Note about park creation limit -->
         <p class="text-center mt-5">Note: Only 1 park can be made per day!</p>
     </div>
 </div>

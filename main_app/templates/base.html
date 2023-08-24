@@ -16,17 +16,20 @@
     {% tailwind_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
+    <!-- Header Navigation -->
     <header class="bg-black bg-opacity-40 custom--header">
       <div class="w-full mx-auto px-4 md:px-6 lg:px-8">
         <nav class="h-16 flex justify-between items-center">
+          <!-- Main Nav Header -->
           <div class="flex-shrink-0">
             <a href="/"><h1 class="pt-3 custom--b text-2xl md:text-4xl">Dino Park</h1></a>
           </div>
+          <!-- Navigation Links -->
           <div class="nav-wrapper">
             <ul>
               <li><a class="custom--a font-semibold" href="{% url 'about' %}">About</a></li>
+              <!-- Conditional Display of Links based on User logged in or not -->
               {% if user.is_authenticated %}
               <li><a class="custom--a font-semibold" href="{% url 'fields_create' %}">Add Park</a></li>
               <li><a class="custom--a font-semibold" href="{% url 'fields_index' %}">All Parks</a></li>
@@ -40,7 +43,6 @@
         </nav>
       </div>
     </header>
-
     <main>
         {% block content %}
         {% endblock %}

@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
+# URLs and image URLs for different colored dinos
 DINO_URLS = {
     ('Blue', 'https://i.imgur.com/dikM05s.gif'),
     ('Pink', 'https://i.imgur.com/CamDYFr.gif'),
@@ -23,19 +23,16 @@ DINO_URLS = {
     ('Yellow', 'https://i.imgur.com/Ptsxyuv.gif'),
     ('Dark Green', 'https://i.imgur.com/QRnJ2Fu.gif')
 }
-DINO_ACTION = {
-    ('DEAD', 'https://img.itch.zone/aW1nLzcyMDM5NjIuZ2lm/original/%2F1n6e%2B.gif')
-}
 
-
+# Home page view
 def home(request):
     return render(request, 'home.html')
 
-
+# About page view
 def about(request):
     return render(request, 'about.html')
 
-
+# List of fields view (requires login)
 @login_required
 def fields_index(request):
     fields = Field.objects.filter(user=request.user).order_by('-date')
@@ -56,7 +53,7 @@ def fields_index(request):
     current_date = datetime.datetime.now()
     return render(request, 'fields/index.html', {'fields': fields, 'current_date': current_date, 'focus_times': focus_times})
 
-
+# Field detail view (requires login)
 @login_required
 def fields_detail(request, field_id):
     field = Field.objects.get(id=field_id)
@@ -73,7 +70,7 @@ def fields_detail(request, field_id):
 
     return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form, 'remaining_tiles': range(remaining_tiles), 'current_date': current_date, 'focus_time': focus_time})
 
-
+# Create a new field view (requires user to be logged in)
 class FieldCreate(LoginRequiredMixin, CreateView):
     model = Field
     fields = ['date']
@@ -82,12 +79,12 @@ class FieldCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-
+# Delete field 
 class FieldDelete(LoginRequiredMixin, DeleteView):
     model = Field
     success_url = '/fields'
 
-
+# Add a dino view (requires user to be logged in)
 @login_required
 def add_dino(request, field_id):
     form = DinoForm(request.POST)
@@ -102,7 +99,7 @@ def add_dino(request, field_id):
 
     return redirect('fields_detail', field_id=field_id)
 
-
+# Dino detail view (requires user to be logged in)
 @login_required
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
@@ -121,7 +118,7 @@ def dinos_detail(request, dino_id):
         'available_animations': available_animations
     })
 
-
+# Update a dino name and colour (requires login)
 class DinoUpdate(LoginRequiredMixin, UpdateView):
     model = Dino
     fields = ['name', 'colour']
@@ -137,7 +134,7 @@ class DinoUpdate(LoginRequiredMixin, UpdateView):
 
         return redirect('dinos_detail', dino.id)
 
-
+# Delete a dino 
 class DinoDelete(LoginRequiredMixin, DeleteView):
     model = Dino
 
@@ -145,7 +142,8 @@ class DinoDelete(LoginRequiredMixin, DeleteView):
         field = self.object.field
         return reverse_lazy('fields_detail', kwargs={'field_id': field.id})
 
-# Associate an animation with a dino view 
+
+# Associate an animation with a dino view
 @login_required
 def assoc_animation(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
@@ -154,6 +152,7 @@ def assoc_animation(request, dino_id):
         animation = Animation.objects.get(id=animation_id)
         dino.animations.add(animation)
     return redirect('dinos_detail', dino_id=dino_id)
+
 
 # User signup view
 def signup(request):

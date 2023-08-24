@@ -1,14 +1,18 @@
-{% extends 'base.html' %} 
-{% block content %}
-
+<!-- Main content section -->
 <div class="w-2/3 mx-auto flex items-center justify-center -mt-60 custom-height--2">
-    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#84cf44] via-[#78bb3f] to-[#0aad64] px-40 text-shadow mb-10"> 
+    <!-- Container for content -->
+    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#84cf44] via-[#78bb3f] to-[#0aad64] px-40 text-shadow mb-10">
+        <!-- Flex container for content -->
         <div class="flex flex-col justify-center items-center text-center">
+            <!-- Heading for the park -->
             <h1 class="text-4xl">Park for {{ field.date }}</h1>
 
+            <!-- Display total focus time -->
             <p>Total focus time: {{ focus_time }} minutes</p>
 
+            <!-- Relative container for isometric elements -->
             <div class="relative mt-16">
+                <!-- Images for trees, bushes, and rocks -->
                 <img src="https://i.imgur.com/mgYSZTd.png" id="tree-1">
                 <img src="https://i.imgur.com/1Gvez2P.png" id="tree-2">
                 <img src="https://i.imgur.com/mgYSZTd.png" id="tree-3">
@@ -20,7 +24,9 @@
                 <img src="https://i.imgur.com/vAY3lge.png" id="rocks-1"> 
                 <img src="https://i.imgur.com/Fr4xXQO.png" id="rocks-2"> 
 
+                <!-- Isometric cube and top view for dinos -->
                 <div class="isometric-cube">
+                      <!-- Dino tiles -->
                     <div class="isometric-side-1"></div>
                     <div class="isometric-side-2"></div>
                     <div class="isometric-top" id="isometric">
@@ -32,7 +38,7 @@
                                 </a>
                             </div>
                         {% endfor %}
-        
+                        <!-- Remaining tiles -->
                         {% for _ in remaining_tiles %}
                             <div class="tile"></div>
                         {% endfor %}
@@ -40,12 +46,16 @@
                 </div>
             </div>
             
-
-            {% if current_date|date == field.date|date and field.get_dinos.all|length < 25 %}
+             <!-- Check if the current date matches field.date and if dinos are less than 25 -->
+             {% if current_date|date == field.date|date and field.get_dinos.all|length < 25 %}
+             <!-- Container for timer and hatching egg -->
                 <div class="flex justify-center items-center h-70 border-solid border-4 border-white border-opacity-50 p-10 rounded-xl space-x-10 bg-gradient-to-b from-[#a36f49] to-[#8c6549] drop-shadow-2xl">
+                     <!-- Timer section -->
                     <div>
                         <div id="countdown" class="font-bold text-7xl">00:00</div>
+                        <!-- Timer length selection dropdown -->
                         <select id="timer-length" class="bg-transparent backdrop-blur-xl border-2 border-white border-opacity-50 rounded-full w-full text-center my-3 text-shadow">
+                            <!-- Timer length options -->
                             <option value="5">5 seconds (DEMO)</option>
                             <option value="300">5 minutes</option>
                             <option value="600">10 minutes</option>
@@ -60,11 +70,14 @@
                             <option value="3300">55 minutes</option>
                             <option value="3600">60 minutes</option>
                         </select>
+                        <!-- Start timer button -->
                         <button id="start-timer" class="flex h-12 items-center justify-center mx-auto px-5 rounded-full bg-blue-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl">Start</button>
                         <div class="flex justify-center items-center">
+                            <!-- Pause and cancel timer buttons -->
                             <button id="pause-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-blue-600 font-bold custom--btn inline-block hidden border-2 border-white border-opacity-50 shadow-xl">Pause</button>
                         <button id="cancel-timer" class="flex h-12 items-center justify-center mx-auto px-5 mt-5 rounded-full bg-red-600 font-bold custom--btn inline-block hidden border-2 border-white border-opacity-50 shadow-xl">Cancel</button>
                         </div>
+                          <!-- Form to add hatched dino -->
                         <form action="{% url 'add_dino' field.id %}" method="POST" class="flex flex-col items-center justify-center hidden" id="result">
                             {% csrf_token %}
                             {{ dino_form }}
@@ -72,6 +85,7 @@
                             <input type="submit" class="flex h-12 items-center justify-center mt-5 mx-auto px-5 rounded-full bg-yellow-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl" value="Hatch Egg">
                         </form>
                     </div>
+                    <!-- Hatching egg section -->
                     <div class="">
                         <div class="border-solid border-4 border-white border-opacity-50 p-4 my-10 rounded-full bg-[url('https://i.imgur.com/ai7MsZ6.png')] bg-cover" id="egg">
                             <div class="relative">
@@ -82,12 +96,14 @@
                     </div>
 
                 </div>
+            <!-- Display message when the park is full -->
             {% elif current_date|date == field.date|date and field.get_dinos.all|length >= 25 %}
                 <div class="flex justify-center items-center h-70 border-solid border-4 border-black border-opacity-50 p-8 rounded-xl space-x-10 bg-gradient-to-b from-[#a36f49] to-[#8c6549] drop-shadow-2xl">
                     <p>Your park is full! Delete some dinos to keep hatching.</p>
                 </div>
             {% endif %}
             
+            <!-- Buttons to delete the park and return to the index -->
             <div class="flex items-center justify-center space-x-10">
                 <a class="h-12 items-center justify-center px-5 py-2 mt-10 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50" href="{% url 'fields_delete' field.id %}">Delete Park</a>
 

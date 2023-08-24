@@ -1,26 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!-- Main content section -->
 <div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
+    <!-- Container for edit form -->
     <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] via-[#78bb3f] to-[#009954] px-20 text-shadow spacing--detail">
-        <div class="flex flex-col justify-center items-center text-center ">
+        <!-- Flex container for content -->
+        <div class="flex flex-col justify-center items-center text-center">
+            <!-- Heading for edit form -->
             <h1 class="text-4xl mb-3">Edit</h1>
+            <!-- Relative container for images -->
             <div class="relative mb-5">
+                <!-- Absolute positioned dino image -->
                 <img class="absolute top-0 left-0 z-1" src="{{ dino.url }}">
+                <!-- Base image on top of dino image -->
                 <img class="z-2" src="https://i.imgur.com/A4Qdy25.png">
             </div>
+            <!-- Form for editing dino details -->
             <form action="" method="POST" id="dino-form">
                 {% csrf_token %}
-                    {{ form.as_p }}
-           
+                <!-- Render form fields as paragraphs -->
+                {{ form.as_p }}
+                <!-- Container for submit and cancel buttons -->
                 <div class="flex items-center justify-center space-x-10">
+                    <!-- Submit button -->
                     <input type="submit" value="Submit" class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-blue-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl">
+                    <!-- Cancel button -->
                     <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'dinos_detail' dino.id %}">Cancel</a>
                 </div>
             </form>
         </div>
     </div>
- </div>
-
+</div>
 
 {% endblock %}

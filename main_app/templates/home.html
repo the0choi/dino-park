@@ -8,6 +8,7 @@
         <div class="w-200 border-solid border-white border-4 border-opacity-20 rounded-xl backdrop-blur-md shadow-xl p-10 text-shadow bg-black bg-opacity-5">
             <div class="flex justify-center items-center">
                 <div class="mr-28">
+                    <!-- Website Introduction -->
                     <p class="font-bold text-xs">
                         <i class='bx bx-cube-alt'></i>
                         A Jurassic-style productivity timer.
@@ -15,10 +16,11 @@
                     <h1 class="text-8xl mt-10">DINO<br>PARK</h1>
                     <p>Stay focused on the things that matter.</p>
                     <p>Hatch your own pre-historic park!</p>
-                        <button class="flex h-12 items-center justify-center px-5 my-8 rounded-full bg-red-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl">
-                            <a href="{% url 'signup' %}">GET STARTED</a>
-                        </button>
-                    
+                    <!-- Signup Button -->
+                    <button class="flex h-12 items-center justify-center px-5 my-8 rounded-full bg-red-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl">
+                        <a href="{% url 'signup' %}">GET STARTED</a>
+                    </button>
+                    <!-- Key Features -->
                     <div class="flex items-center space-x-5">
                         <div class="flex items-center justify-center space-x-3">
                             <i class='bx bxs-meteor text-3xl'></i>
@@ -30,16 +32,17 @@
                         </div>
                     </div>
                 </div>
+                <!-- Dino Egg Image with background -->
                 <div class="bg-[url('https://i.imgur.com/ai7MsZ6.png')] bg-cover w-96 h-96 rounded-3xl mx-auto flex items-center justify-center border-8 border-solid border-white border-opacity-20 shadow-xl">
                     <img src="https://i.imgur.com/rwTqqYv.gif" draggable="false" class="w-auto mt-20">
                 </div>
             </div>
         </div>
     </div>
+    <!-- Footer -->
     <footer class="text-center -mt-8">
         <p>Made by <a href="https://github.com/the0choi" class="font-bold text-base">the0choi</a> and <a href="https://github.com/motech99" class="font-bold text-base">Mohammed</a></p>
     </footer>
 </div>
-
 
 {% endblock %}

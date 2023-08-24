@@ -1,26 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!-- Main content section -->
 <div class="w-full mx-auto flex items-center justify-center h-screen -mt-20">
+    <!-- Container for content -->
     <div class="max-w-md border-solid border-white border-4 border-opacity-20 rounded-xl backdrop-blur-md shadow-xl p-10 bg-black bg-opacity-5">
+        <!-- Flex container for inner content -->
         <div class="flex flex-col justify-center items-center text-center text-shadow responsive-container">
             <div>
+                <!-- Welcome message with icon -->
                 <p class="font-bold text-4xl mb-3">
                     <i class='bx bxs-message-square-dots'></i>
                     - Welcome to Dino Park!
                 </p>
+                <!-- Images of hatching dinosaurs -->
                 <div class="flex justify-center items-center mb-2 space-x-2"> 
                     <img src="https://i.imgur.com/OLfpwzO.gif" draggable="false">
                     <img src="https://i.imgur.com/w1985G9.gif" draggable="false">
                     <img src="https://i.imgur.com/kUtRSAW.gif" draggable="false">
                     <img src="https://i.imgur.com/GhgQne6.gif" draggable="false">
                 </div>
+                <!-- Bullet points of features -->
                 <div class="mx-4 mb-7">
                     <p><i class='bx bxs-star'></i><span class="spacer">A unique way to stay on task and remain focused.</span></p>
                     <p><i class='bx bxs-star'></i><span class="spacer">Turn your focus sessions into cute hatchable dinosaurs.</span></p> 
                     <p><i class='bx bxs-star'></i><span class="spacer">Configure distinct animations for each dino, and build your Jurassic land!</span></p>
                 </div>
+                <!-- Explanation of Dino Park and its features -->
                 <p class="mb-4 md:mb-8">Dino Park gamifies the popular Pomodoro technique often used for productive moments in life. Simply begin hatching a dino egg whenever you want to focus, and watch as the egg hatches at the end of your session. Watch as your Dino Park grows, and see a manifestation of your productivity through the Parks you have built over each passing day.</p>
+                <!-- "GET STARTED" button which takes to sign up page -->
                 <button class="flex h-12 items-center justify-center px-5 mt-4 md:mt-8 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl">
                     <a href="{% url 'signup' %}">GET STARTED</a>
                 </button>

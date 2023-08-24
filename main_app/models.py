@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 import random
 
-# Available color options for dinos
+# Available color options for dino
 COLOURS = (
     ('Blue', 'Blue'),
     ('Pink', 'Pink'),
@@ -17,7 +17,7 @@ COLOURS = (
     ('Dark Green', 'Dark Green')
 )
 
-# animations for dinos
+# Available actions/animations for dino
 ACTIONS = (
     ('Move', 'Move'),
     ('Kick', 'Kick'),
@@ -25,11 +25,11 @@ ACTIONS = (
     ('Jump', 'Jump'),
 )
 
-# Represents the field  where dinos hatch
+# Represents the field where dinos are hatched
 class Field(models.Model):
-    date = models.DateField('Date', unique=True)  
-    user = models.ForeignKey(User, on_delete=models.CASCADE) 
-    duration = models.CharField(default='0')  
+    date = models.DateField('Date', unique=True)  # Date of the field
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # User associated with the field
+    duration = models.CharField(default='0')  # Duration of the field's session
 
     def get_dinos(self):
         return Dino.objects.filter(field=self)
@@ -44,7 +44,7 @@ class Field(models.Model):
     def get_absolute_url(self):
         return reverse('fields_detail', kwargs={'field_id': self.id})
 
-# Represnts the different animations that can be assigned to dinos
+# Represents different animations that can be assigned to dino
 class Animation(models.Model):
     action = models.CharField(
         max_length=20,
@@ -54,8 +54,7 @@ class Animation(models.Model):
     def __str__(self):
         return self.action
 
-
-# Represents a dino with name attribute and available color
+# Represents a dino entity with attributes and animations
 class Dino(models.Model):
     name = models.CharField(
         max_length=20,
@@ -65,16 +64,11 @@ class Dino(models.Model):
         choices=COLOURS,
         default=1
     )
-    # Duration of the sessions
-    duration = models.CharField(max_length=20)  
+    duration = models.CharField(max_length=20)  # Duration of the dino's session
+    url = models.URLField(max_length=200)  # URL associated with the dino
+    field = models.ForeignKey(Field, on_delete=models.CASCADE)  # Field in which the dinos is present
     
-    # URL associated with the dinosaur
-    url = models.URLField(max_length=200) 
-     
-    # Field in which the dinos is present
-    field = models.ForeignKey(Field, on_delete=models.CASCADE)  
-    
-    # Assignable animations for the dinos
+    # Assignable animations for the dino
     animations = models.ManyToManyField(Animation)
 
     def __str__(self):
