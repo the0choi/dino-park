@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
-    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#009954] px-20 text-shadow spacing--detail">
+    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#009954] px-15 text-shadow spacing--detail">
         <h1 class="text-4xl mb-3 text-center mx-auto">Dino Details</h1>
         
         <div class="flex justify-center items-center space-x-10">
@@ -10,7 +10,7 @@
                 <div class="bg-[url('https://i.imgur.com/ai7MsZ6.png')] bg-cover rounded-full p-4 border-solid border-4 border-white border-opacity-50 shadow-xl">
                     <div class="relative">
                         <img class="absolute top-0 left-0 z-1 drop-shadow-[0_0px_5px_rgba(255,255,255,0.4)]" src="{{ dino.url }}">
-                        <img class="z-2" src="https://i.imgur.com/A4Qdy25.png">
+                        <img class="z-2" id="dino-img" src="https://i.imgur.com/A4Qdy25.png">
                     </div>
                 </div>
                 <table class="">
@@ -23,13 +23,13 @@
                         <td class="pb-2">{{dino.name}}</td>
                         <td class="pb-2">
                             {% if dino.colour|lower == 'dark green' %}
-                    <span class="font-bold" style="color: #006400;"> {{ dino.colour }}</span>
+                    <span class="font-bold" id="dino-colour" style="color: #006400;"> {{ dino.colour }}</span>
                     {% elif dino.colour|lower == 'dark blue' %}
-                    <span class="font-bold" style="color: #00008B;">{{ dino.colour }}</span>
+                    <span class="font-bold" id="dino-colour" style="color: #00008B;">{{ dino.colour }}</span>
                     {% elif dino.colour|lower == 'light grey' %}
-                    <span class="font-bold" style="color: #D3D3D3;">{{ dino.colour }}</span>
+                    <span class="font-bold" id="dino-colour" style="color: #D3D3D3;">{{ dino.colour }}</span>
                     {% else %}
-                        <span class="font-bold" style="color: {{ dino.colour }}">{{ dino.colour }}</span>
+                        <span class="font-bold" id="dino-colour" style="color: {{ dino.colour }}">{{ dino.colour }}</span>
                     {% endif %}
                         </td>
                         <td class="pb-2">{{focus_time}} mins</td>
@@ -46,31 +46,34 @@
 
             <div class="h-96 border-white border-2 border-opacity-50"></div>
 
-            <div class="flex flex-col justify-center items-center text-center">
-                <p>Available Actions:</p>
+            <div class="w-40 flex flex-col justify-center items-center text-center">
+                <p class="font-bold">Available Actions</p>
                 {% if dino.animations.count %}
-                    {% for animation in dino.animations.all %}
-                        <p>Action: {{ animation }}</p>
-                        <form action="{% url 'unassoc_animation' dino.id animation.id %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn">Remove</button>
-                        </form>
-                    {% endfor %}
+                    <select id="interact-option"class="bg-transparent backdrop-blur-xl border-2 border-white border-opacity-50 rounded-full w-full text-center my-3 text-shadow pl-8">
+                        {% for animation in dino.animations.all %}
+                            <option value="{{ animation }}">{{ animation }}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="h-12 px-5 py-2 rounded-full bg-purple-600 font-bold text-white custom--btn border-2 border-white border-opacity-50 shadow-xl" id="interact">Interact</button>
                 {% else %}
-                <p>No Actions</p>
+                <p>None</p>
                 {% endif %}
+
+                <div class="w-20 border-white border-2 border-opacity-50 my-5"></div> 
                 
-                <p>Actions To Add:</p>
+                <p class="font-bold">Actions To Add</p>
                 {% if available_animations.count %}
-                    {% for animation in available_animations.all %}
-                    <p>{{ animation }}</p>
-                    <form action="{% url 'assoc_animation' dino.id animation.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn">Add</button>
+                    <form action="{% url 'assoc_animation' dino.id %}" method="POST">
+                        {% csrf_token %}
+                        <select name="animation_id"class="bg-transparent backdrop-blur-xl border-2 border-white border-opacity-50 rounded-full w-full text-center my-3 text-shadow pl-8">
+                            {% for animation in available_animations.all %}
+                                <option value="{{ animation.id }}">{{ animation }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="h-12 px-5 py-2 rounded-full bg-blue-600 font-bold text-white custom--btn border-2 border-white border-opacity-50 shadow-xl">Add</button>
                     </form>
-                    {% endfor %}
                 {% else %}
-                    <p>All available actions have been added</p>
+                    <p>All added!</p>
                 {% endif %}
             </div>
         </div>       
