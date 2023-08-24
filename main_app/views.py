@@ -1,6 +1,4 @@
 import datetime
-from random import shuffle
-from django.db.models import F
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -13,20 +11,21 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 DINO_URLS = {
-    ('Blue', 'https://i.imgur.com/dikM05s.gif'), 
-    ('Pink', 'https://i.imgur.com/CamDYFr.gif'), 
-    ('Grey', 'https://i.imgur.com/0bin3rQ.gif'), 
-    ('Dark Blue', 'https://i.imgur.com/AS84RMX.gif'), 
-    ('Light Grey', 'https://i.imgur.com/Uh8Bg49.gif'), 
-    ('Red', 'https://i.imgur.com/c5XOuHP.gif'), 
-    ('Orange', 'https://i.imgur.com/s5H4eOr.gif'), 
-    ('Green', 'https://i.imgur.com/lTOcnhK.gif'), 
-    ('Yellow', 'https://i.imgur.com/Ptsxyuv.gif'), 
+    ('Blue', 'https://i.imgur.com/dikM05s.gif'),
+    ('Pink', 'https://i.imgur.com/CamDYFr.gif'),
+    ('Grey', 'https://i.imgur.com/0bin3rQ.gif'),
+    ('Dark Blue', 'https://i.imgur.com/AS84RMX.gif'),
+    ('Light Grey', 'https://i.imgur.com/Uh8Bg49.gif'),
+    ('Red', 'https://i.imgur.com/c5XOuHP.gif'),
+    ('Orange', 'https://i.imgur.com/s5H4eOr.gif'),
+    ('Green', 'https://i.imgur.com/lTOcnhK.gif'),
+    ('Yellow', 'https://i.imgur.com/Ptsxyuv.gif'),
     ('Dark Green', 'https://i.imgur.com/QRnJ2Fu.gif')
 }
 DINO_ACTION = {
     ('DEAD', 'https://img.itch.zone/aW1nLzcyMDM5NjIuZ2lm/original/%2F1n6e%2B.gif')
 }
+
 
 def home(request):
     return render(request, 'home.html')
@@ -107,8 +106,8 @@ def add_dino(request, field_id):
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
     field = dino.field
-    animations = dino.animations.all()
-    actions_dino_doesnt_have = Animation.objects.exclude(id__in=dino.animation_collection.all())
+    id_list = dino.animations.all().values_list('id')
+    available_animations = Animation.objects.exclude(id__in=id_list)
 
     # Calculates total focus time
     mins, secs = map(int, dino.duration.split(":"))
@@ -118,10 +117,8 @@ def dinos_detail(request, dino_id):
         'dino': dino,
         'field': field,
         'focus_time': focus_time,
-        'animations': animations,
-        'DINO_ACTION': DINO_ACTION,
-        'actions': actions_dino_doesnt_have
-        })
+        'available_animations': available_animations
+    })
 
 
 class DinoUpdate(LoginRequiredMixin, UpdateView):
@@ -136,10 +133,9 @@ class DinoUpdate(LoginRequiredMixin, UpdateView):
                 dino.url = url
                 break
         dino.save()
-        
-        
+
         return redirect('dinos_detail', dino.id)
-    
+
 
 class DinoDelete(LoginRequiredMixin, DeleteView):
     model = Dino
@@ -148,19 +144,22 @@ class DinoDelete(LoginRequiredMixin, DeleteView):
         field = self.object.field
         return reverse_lazy('fields_detail', kwargs={'field_id': field.id})
 
+
 @login_required
-def assoc_action(request, dino_id, animation_id):
+def assoc_animation(request, dino_id, animation_id):
     dino = Dino.objects.get(id=dino_id)
     animation = Animation.objects.get(id=animation_id)
     dino.animation_collection.add(animation)
     return redirect('dinos_detail', dino_id=dino_id)
 
+
 @login_required
-def unassoc_action(request, dino_id, animation_id):
+def unassoc_animation(request, dino_id, animation_id):
     dino = Dino.objects.get(id=dino_id)
     animation = Animation.objects.get(id=animation_id)
     dino.animation_collection.remove(animation)
     return redirect('dinos_detail', dino_id=dino_id)
+
 
 def signup(request):
     error_message = ''
