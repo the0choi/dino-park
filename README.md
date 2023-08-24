@@ -69,5 +69,5 @@ Clicking on a dino reveals more information about it and can add actions/edit th
 
 ## Contributors
 
-- Theodore Choi (@the0choi)
-- Mohammed Hani (@motech99)
+- Theodore Choi ([@the0choi](https://github.com/the0choi))
+- Mohammed Hani ([@motech99](https://github.com/motech99))
