@@ -1113,6 +1113,7 @@ select {
   background-color: rgb(38 58 41 / var(--tw-bg-opacity));
 }
 
+
 .bg-\[\#41644A\] {
   --tw-bg-opacity: 1;
   background-color: rgb(65 100 74 / var(--tw-bg-opacity));
@@ -1190,6 +1191,18 @@ select {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
 
+.bg-\[url\(\'https\:\/\/t4\.ftcdn\.net\/jpg\/05\/60\/35\/97\/360_F_560359735_AiOT0jTCKv8Xzrj0Tb3n6QRBxYWnKN9v\.jpg\'\)\] {
+  background-image: url('https://t4.ftcdn.net/jpg/05/60/35/97/360_F_560359735_AiOT0jTCKv8Xzrj0Tb3n6QRBxYWnKN9v.jpg');
+}
+
+.bg-\[url\(\'https\:\/\/cdn1\.epicgames\.com\/ue\/product\/Screenshot\/Showroom\%204-1920x1080-9c4f6a792f7c64503e0f74f33dcc0dc4\.jpg\?resize\=1\&w\=1920\'\)\] {
+  background-image: url('https://cdn1.epicgames.com/ue/product/Screenshot/Showroom%204-1920x1080-9c4f6a792f7c64503e0f74f33dcc0dc4.jpg?resize=1&w=1920');
+}
+
+.bg-\[url\(\'https\:\/\/assetstorev1-prd-cdn\.unity3d\.com\/key-image\/cb9e6914-de2c-44ab-9110-72e9559257ad\.png\'\)\] {
+  background-image: url('https://assetstorev1-prd-cdn.unity3d.com/key-image/cb9e6914-de2c-44ab-9110-72e9559257ad.png');
+}
+
 .from-\[\#78bb3f\] {
   --tw-gradient-from: #78bb3f var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(120 187 63 / 0) var(--tw-gradient-to-position);
@@ -1226,6 +1239,12 @@ select {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-\[\#000\] {
+  --tw-gradient-from: #000 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .to-\[\#009954\] {
   --tw-gradient-to: #009954 var(--tw-gradient-to-position);
 }
@@ -1240,6 +1259,10 @@ select {
 
 .to-\[\#4FC0D0\] {
   --tw-gradient-to: #4FC0D0 var(--tw-gradient-to-position);
+}
+
+.to-\[\#0000\] {
+  --tw-gradient-to: #0000 var(--tw-gradient-to-position);
 }
 
 .bg-cover {

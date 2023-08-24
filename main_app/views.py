@@ -10,6 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 DINO_URLS = {
     ('Blue', 'https://i.imgur.com/dikM05s.gif'),
     ('Pink', 'https://i.imgur.com/CamDYFr.gif'),
@@ -144,7 +145,7 @@ class DinoDelete(LoginRequiredMixin, DeleteView):
         field = self.object.field
         return reverse_lazy('fields_detail', kwargs={'field_id': field.id})
 
-
+# Associate an animation with a dino view 
 @login_required
 def assoc_animation(request, dino_id, animation_id):
     dino = Dino.objects.get(id=dino_id)
@@ -152,7 +153,7 @@ def assoc_animation(request, dino_id, animation_id):
     dino.animation_collection.add(animation)
     return redirect('dinos_detail', dino_id=dino_id)
 
-
+# Dissociate an animation from a dino view 
 @login_required
 def unassoc_animation(request, dino_id, animation_id):
     dino = Dino.objects.get(id=dino_id)
@@ -160,7 +161,7 @@ def unassoc_animation(request, dino_id, animation_id):
     dino.animation_collection.remove(animation)
     return redirect('dinos_detail', dino_id=dino_id)
 
-
+# User signup view
 def signup(request):
     error_message = ''
     if request.method == 'POST':
