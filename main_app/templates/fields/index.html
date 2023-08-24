@@ -2,14 +2,14 @@
 {% block content %}
 
 <div class="w-2/3 mx-auto flex items-center justify-center -mt-60 custom-height--2">
-    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] to-[#009954] px-40 text-shadow mb-10">
+    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#1F8A70] to-[#009954] px-40 text-shadow mb-10">
         <div class="flex flex-col justify-center items-center text-center">
             <h1 class="text-4xl">All Parks</h1>
             <p>Today's Date: {{  current_date|date }}</p>
             <p><br>View all your parks here. Dinos can only be hatched in<br> today's park, so get hatching as soon as possible!</p>
 
             {% if fields.all|length >= 7 %}
-                <div class="border-2 border-white rounded-xl mt-8 px-10 pt-8 pb-4 bg-gray-600">
+                <div class="border-2 border-white rounded-xl mt-8 px-10 pt-8 pb-4 bg-[#17594A]">
                     <p>Total focus time over past 7 parks (mins)</p>
                     <div id="parks-graph" class="h-40 w-50 my-2"></div>
                 </div>
@@ -58,7 +58,7 @@
 
             <div class="rounded-lg mt-10 max-h-96 overflow-y-auto border-2 border-white border-opacity-50">
                 <table class="table-auto w-full text-sm text-left text-gray-400">
-                    <thead class="text-xs text-center text-gray-300 uppercase bg-blue-600">
+                    <thead class="text-xs text-center text-gray-300 uppercase bg-[#263A29]">
                         <tr>
                             <th class="px-6 py-3">
                                 Date
@@ -73,7 +73,7 @@
                     </thead>
                     <tbody>
                         {% for field in fields %}
-                            <tr class="border-b bg-blue-400 border-gray-700 hover:bg-blue-500">
+                            <tr class="border-b bg-[#41644A] border-gray-700 hover:bg-[#9DC08B]">
                             <th class="px-6 py-4 font-semibold text-white">
                                 {{ field.date|date }}
                             </th>
@@ -81,7 +81,7 @@
                                 {{ field.duration }} mins
                             </td>
                             <td class="px-6 py-4">
-                                <a class="h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'fields_detail' field.id %}">Visit</a>
+                                <a class="h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-[#A8DF8E] font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'fields_detail' field.id %}">Visit</a>
                             </td>
                             </tr>
                         {% endfor %}
