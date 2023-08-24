@@ -32,14 +32,8 @@ urlpatterns = [
     
     # Delete a dino
     path('Dinos/<int:pk>/delete/', views.DinoDelete.as_view(), name='dinos_delete'),
-    
-    # Associate an animation with a specific dino
-    path('dinos/<int:dino_id>/assoc_animation/<int:animation_id>/', views.assoc_animation, name='assoc_animation'),
-    
-    # Dissociate an animation from a specific dino
-    path('dinos/<int:dino_id>/unassoc_animation/<int:animation_id>/', views.unassoc_animation, name='unassoc_animation'),
-    
-    # URL patterns for authentication (login, logout)
+    path('dinos/<int:dino_id>/assoc_animation/', views.assoc_animation, name='assoc_animation'),
+    # path('dinos/<int:dino_id>/assoc_animation/<int:animation_id>/', views.assoc_animation, name='assoc_animation'),
     path('accounts/', include('django.contrib.auth.urls')),
     
     # User signup page

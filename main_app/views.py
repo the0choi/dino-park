@@ -147,18 +147,12 @@ class DinoDelete(LoginRequiredMixin, DeleteView):
 
 # Associate an animation with a dino view 
 @login_required
-def assoc_animation(request, dino_id, animation_id):
+def assoc_animation(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
-    animation = Animation.objects.get(id=animation_id)
-    dino.animation_collection.add(animation)
-    return redirect('dinos_detail', dino_id=dino_id)
-
-# Dissociate an animation from a dino view 
-@login_required
-def unassoc_animation(request, dino_id, animation_id):
-    dino = Dino.objects.get(id=dino_id)
-    animation = Animation.objects.get(id=animation_id)
-    dino.animation_collection.remove(animation)
+    animation_id = request.POST.get('animation_id')
+    if animation_id:
+        animation = Animation.objects.get(id=animation_id)
+        dino.animations.add(animation)
     return redirect('dinos_detail', dino_id=dino_id)
 
 # User signup view

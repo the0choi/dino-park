@@ -21,12 +21,8 @@ COLOURS = (
 ACTIONS = (
     ('Move', 'Move'),
     ('Kick', 'Kick'),
-    ('Hurt', 'Hurt'),
-    ('Dash', 'Dash'),
-    ('Bite', 'Bite'),
-    ('Dead', 'Dead'),
+    ('Dance', 'Dance'),
     ('Jump', 'Jump'),
-    ('Avoid', 'Avoid'),
 )
 
 # Represents the field  where dinos hatch
