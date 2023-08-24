@@ -1550,6 +1550,10 @@ select {
   background-color: rgb(157 192 139 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-\[\]:hover {
+  background-color: ;
+}
+
 @media (min-width: 768px) {
   .md\:mx-0 {
     margin-left: 0px;
