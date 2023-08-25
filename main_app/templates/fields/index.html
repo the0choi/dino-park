@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- Main content section -->
 <div class="w-2/3 mx-auto flex items-center justify-center -mt-60 custom-height--2">
-    <!-- Container for content -->
     <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#1F8A70] to-[#009954] px-40 text-shadow mb-10">
-        <!-- Flex container for content -->
         <div class="flex flex-col justify-center items-center text-center">
-            <!-- Heading for all parks -->
             <h1 class="text-4xl">All Parks</h1>
             <!-- Display today's date -->
             <p>Today's Date: {{  current_date|date }}</p>
@@ -21,9 +17,8 @@
                     <div id="parks-graph" class="h-40 w-50 my-2"></div>
                 </div>
 
-                <!-- JavaScript script for generating the graph -->
+                <!-- JavaScript code for generating the graph -->
                 <script>
-                    // JavaScript code for generating the graph
                     const focusTimes = [
                         {% for item in focus_times %}
                             ['{{ item.0 }}', '{{ item.1 }}'],

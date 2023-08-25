@@ -1,4 +1,4 @@
-# Dino Park - Productivity Gamification Website
+# Dino Park - Gamified Productivity Timer App
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -15,21 +15,24 @@ Dino Park is a web application that gamifies the popular Pomodoro technique to e
 ## Technologies Used
 
 - Django
+- PostgreSQL
 - HTML
 - CSS (Tailwind CSS)
 - JavaScript
-- Plotly.js
+- Photoshop
+- Git
+- Heroku
 
 ## Key Features
 
-- **Pomodoro Technique:** 
-Users can set focused work sessions using a countdown timer, and upon completion, a dino egg hatches, symbolising their accomplishment.
+- **Productivity Timer:** 
+Users can set focused work sessions using a countdown timer, and upon completion, a dino egg hatches. The dino is a virtual representation of your focused time.
 
 - **Virtual Dino Park:** 
-Users' productivity is visually represented by the growth of their virtual park as more dino eggs hatch over time.
+Users' overall productivity across the day is visually depicted by the growth of their virtual park as more dino eggs are hatched over time.
 
 - **Dynamic Data Display:** 
-The website uses Plotly to create dynamic graphs that showcase the user's focus time trends across the last 7 parks.
+The website uses Plotly to create a dynamic graph that showcases the user's focus time trends across their last created 7 parks.
 
 - **Responsive Design:** 
 Tailwind CSS ensures a responsive and mobile-friendly user interface, providing an optimal experience on different devices.
@@ -37,32 +40,42 @@ Tailwind CSS ensures a responsive and mobile-friendly user interface, providing 
 - **User Authentication:** 
 Users can sign up, log in, and log out securely to access their personalised Dino Park.
 
+## Technical Features
+
+- Built through Django, using Python as the backend programming language
+- It is connected to PostgreSQL for its database. Database stores data on users, parks, dinos, and animation actions
+- Code is structured with MVT design
+- Demonstrates CRUD functionality across the park, dino and animation models
+- Tailwind was chosen to be used for CSS for the flexibility with the website's styling, as well as for the responsive design and UI it offers
+- Pushed to Github via Git
+- Website deployed to Heroku
+
+## ER Diagram
+- To add..
+
+## Screenshots
+- To add..
+
 ## Usage
 
-1. **Sign Up/Login:** 
+**Sign Up/Login:** 
 Users can create an account or log in to access their Dino Park.
 
-2. **All parks:** 
-The All parks displays the user's virtual park, where dino eggs hatch based on completed focused work sessions.
+**Add Park:**
+Create a park for a selected date to add to your collection. Note: only 1 park can be made for a particular date, and dinos can only be hatched for today's date.
 
-3. **Timer:** 
-Users can set a timer for their work sessions and observe the countdown.
+**All Parks:** 
+An overview of all of the user's virtual parks are showcased, displaying the date, total focused time spent each day and a link to each park. Additionally, a simple graph visualisation displays focus time trends over the past 7 parks, helping users track their producitivity over the week.
 
-4. **Park Overview:** 
-Users can view their Dino Park's overall productivity, including total focus time and the number of hatched dinos.
+**Park Overview:** 
+Users can view their Dino Park's overall productivity, including total focus time and the number of hatched dinos. Users can also set a timer here for their work sessions and use the countdown shown in the tab title while viewing other websites. Parks can also be removed here.
 
-5. **Data Visualisation:** 
-The graph displays focus time trends over the past 7 parks, helping users track their progress.
-
-6. **Add and Remove Parks:** 
-Users can add and remove parks, allowing them to track productivity on different days.
-
-7. **Dino Details:** 
-Clicking on a dino reveals more information about it and can add actions/edit the dino!
+**Dino Details:** 
+Clicking on a dino reveals more information about it. Edit their name, dino colour and even interact with your dino freely!
 
 ## Credits
 
-- **Dino illustrations**: [Dino Family by DemChing](https://demching.itch.io/dino-family)
+- **Dino Sprite Pack**: [Dino Family by DemChing](https://demching.itch.io/dino-family)
 
 - **Fonts**: 
   - [Broken Console](https://www.cdnfonts.com/broken-console.font)

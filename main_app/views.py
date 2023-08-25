@@ -1,7 +1,6 @@
 import datetime
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView, DetailView
 from .models import Field, Dino, Animation
 from .forms import DinoForm
 from django.urls import reverse_lazy
@@ -37,9 +36,9 @@ def about(request):
 def fields_index(request):
     fields = Field.objects.filter(user=request.user).order_by('-date')
 
+    # Calculates total focus time for a field
     focus_times = []
     for field in fields:
-        # Calculates total focus time for a field
         total_secs = 0
         for dino in field.dino_set.all():
             mins, secs = map(int, dino.duration.split(":"))
@@ -70,7 +69,7 @@ def fields_detail(request, field_id):
 
     return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form, 'remaining_tiles': range(remaining_tiles), 'current_date': current_date, 'focus_time': focus_time})
 
-# Create a new field view (requires user to be logged in)
+# Create a new field view (requires login)
 class FieldCreate(LoginRequiredMixin, CreateView):
     model = Field
     fields = ['date']
@@ -79,12 +78,12 @@ class FieldCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-# Delete field 
+# Delete field (requires login)
 class FieldDelete(LoginRequiredMixin, DeleteView):
     model = Field
     success_url = '/fields'
 
-# Add a dino view (requires user to be logged in)
+# Add a dino view (requires login)
 @login_required
 def add_dino(request, field_id):
     form = DinoForm(request.POST)
@@ -99,15 +98,17 @@ def add_dino(request, field_id):
 
     return redirect('fields_detail', field_id=field_id)
 
-# Dino detail view (requires user to be logged in)
+# Dino detail view (requires login)
 @login_required
 def dinos_detail(request, dino_id):
     dino = Dino.objects.get(id=dino_id)
     field = dino.field
+
+    # Finds all animations that haven't been added to the dino yet
     id_list = dino.animations.all().values_list('id')
     available_animations = Animation.objects.exclude(id__in=id_list)
 
-    # Calculates total focus time
+    # Calculates focus time in minutes
     mins, secs = map(int, dino.duration.split(":"))
     focus_time = f'{(mins * 60 + secs) // 60}'
 

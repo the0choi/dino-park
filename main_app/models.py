@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-import random
+
 
 # Available color options for dino
 COLOURS = (

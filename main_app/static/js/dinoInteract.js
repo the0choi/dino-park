@@ -46,7 +46,7 @@ const ANIMATIONS = [
     ['Jump', 'Dark Green', 'https://i.imgur.com/OTwP04C.gif'],
 ]
 
-
+// Displays animation based on dino colour and action chosen
 interactEl.addEventListener("click", () => {
   const action = optionEl.value;
   const colour = colourEl.innerText;

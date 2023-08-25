@@ -2,11 +2,8 @@
 
 {% block content %}
 
-<!-- Main content section -->
 <div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
-    <!-- Container for the delete confirmation -->
     <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] via-[#78bb3f] to-[#009954] px-20 text-shadow spacing--detail">
-        <!-- Heading for delete confirmation -->
         <h1 class="text-4xl mb-3">Delete Park?</h1>
         <!-- Form for delete confirmation -->
         <form action="" method="POST">
@@ -19,7 +16,6 @@
                 <a class="inline-flex h-12 items-center justify-center px-5 mt-5 rounded-full bg-blue-600 font-bold text-white mx-auto border-2 border-white border-opacity-50 shadow-xl custom--btn" href="{% url 'fields_detail' field.id %}">Cancel</a>
             </div>
         </form>
-        <!-- Note about irreversible action -->
         <p class="text-center mt-5 text-shadow">Note: This action can't be undone!</p>
     </div>
 </div>

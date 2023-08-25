@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
   }
 
-  // Re-add newly shuffled tiles back to the board
+  // Add newly shuffled tiles back to the board
   tiles.forEach((tile) => {
     board.appendChild(tile);
   });
