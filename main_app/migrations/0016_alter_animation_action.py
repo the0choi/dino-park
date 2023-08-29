@@ -10,9 +10,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='animation',
-            name='action',
-            field=models.CharField(choices=[('Move', 'Move'), ('Kick', 'Kick'), ('Hurt', 'Hurt'), ('Dash', 'Dash'), ('Bite', 'Bite'), ('Dead', 'Dead'), ('Jump', 'Jump'), ('Avoid', 'Avoid')], max_length=20),
-        ),
     ]

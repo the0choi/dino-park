@@ -18,7 +18,11 @@
                     <p>Hatch your own pre-historic park!</p>
                     <!-- Signup Button -->
                     <button class="flex h-12 items-center justify-center px-5 my-8 rounded-full bg-red-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'fields_create' %}">GET STARTED</a>
+                        {% else %}
                         <a href="{% url 'signup' %}">GET STARTED</a>
+                        {% endif %}
                     </button>
                     <!-- Key Features -->
                     <div class="flex items-center space-x-5">

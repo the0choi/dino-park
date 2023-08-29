@@ -7,7 +7,7 @@
             <h1 class="text-4xl">All Parks</h1>
             <!-- Display today's date -->
             <p>Today's Date: {{  current_date|date }}</p>
-            <p><br>View all your parks here. Dinos can only be hatched in<br> today's park, so get hatching as soon as possible!</p>
+            <p><br>View all your parks here. Dinos can only be hatched in<br> parks made today, so get hatching as soon as possible!</p>
 
             <!-- Check if there are at least 7 parks for the graph -->
             {% if fields.all|length >= 7 %}

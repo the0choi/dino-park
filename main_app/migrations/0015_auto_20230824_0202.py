@@ -3,21 +3,6 @@
 from django.db import migrations
 from main_app.models import Animation
 
-def populate_animations(apps, schema_editor):
-    Animation = apps.get_model('main_app', 'Animation')
-    animations_data = [
-        {"action": "Move"}, 
-        {"action": "Kick"}, 
-        {"action": "Hurt"}, 
-        {"action": "Dash"}, 
-        {"action": "Bite"}, 
-        {"action": "Dead"}, 
-        {"action": "Jump"}, 
-        {"action": "Avoid"},
-    ]
-    for animation_data in animations_data:
-        Animation.objects.create(**animation_data)
-
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -25,6 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(populate_animations),
     ]
 

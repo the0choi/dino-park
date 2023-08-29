@@ -27,7 +27,11 @@
                 <p class="mb-4 md:mb-8">Dino Park gamifies the popular Pomodoro technique often used for productive moments in life. Simply begin hatching a dino egg whenever you want to focus, and watch as the egg hatches at the end of your session. Watch as your Dino Park grows, and see a manifestation of your productivity through the Parks you have built over each passing day.</p>
                 <!-- Get Started button which takes to sign up page -->
                 <button class="flex h-12 items-center justify-center px-5 mt-4 md:mt-8 rounded-full bg-red-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl">
-                    <a href="{% url 'signup' %}">GET STARTED</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'fields_create' %}">GET STARTED</a>
+                    {% else %}
+                        <a href="{% url 'signup' %}">GET STARTED</a>
+                    {% endif %}
                 </button>
             </div>
         </div>

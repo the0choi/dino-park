@@ -27,7 +27,7 @@ ACTIONS = (
 
 # Represents the field where dinos are hatched
 class Field(models.Model):
-    date = models.DateField('Date', unique=True)  # Date of the field
+    date = models.DateField('Date')  # Date of the field
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # User associated with the field
     duration = models.CharField(default='0')  # Duration of the field's session
 

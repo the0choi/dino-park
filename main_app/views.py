@@ -60,6 +60,11 @@ def fields_detail(request, field_id):
     remaining_tiles = int(25 - len(field.dino_set.all()))
     current_date = datetime.datetime.now()
 
+    # Check if field being accessed belongs to the user
+    field_authorised = False 
+    if field.user.id == request.user.id:
+        field_authorised = True
+
     # Calculates total focus time for a field
     total_secs = 0
     for dino in field.dino_set.all():
@@ -67,7 +72,7 @@ def fields_detail(request, field_id):
         total_secs += mins * 60 + secs
     focus_time = f'{total_secs // 60}'
 
-    return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form, 'remaining_tiles': range(remaining_tiles), 'current_date': current_date, 'focus_time': focus_time})
+    return render(request, 'fields/detail.html', {'field': field, 'dino_form': dino_form, 'remaining_tiles': range(remaining_tiles), 'current_date': current_date, 'focus_time': focus_time, 'field_authorised': field_authorised})
 
 # Create a new field view (requires login)
 class FieldCreate(LoginRequiredMixin, CreateView):
