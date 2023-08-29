@@ -55,9 +55,9 @@ Users can sign up, log in, and log out securely to access their personalised Din
 - Website deployed to Heroku
 
 ## ER Diagram
-[ER Diagram](https://i.imgur.com/Q5k8cvo.png)
+![ER Diagram](https://i.imgur.com/Q5k8cvo.png)
 
-- Users have a 1:M relationship with field
+- Users have a 1:M relationship with Field
 - Field has a 1:M relationship with Dino
 - Dino has a M:M relationship with Animation
 
