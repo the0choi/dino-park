@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="w-2/3 mx-auto flex items-center justify-center h-screen -mt-20">
+    <div class="border-solid border-white border-4 border-opacity-80 rounded-xl backdrop-blur-xl shadow-xl p-10 bg-gradient-to-b from-[#78bb3f] via-[#78bb3f] to-[#009954] px-20 text-shadow">
+        <div class="flex flex-col justify-center items-center text-center">
+            <h1 class="text-4xl mb-3">Remove</h1>
+            <!-- Dino with shadow image -->
+            <div class="relative mb-5">
+                <img class="absolute top-0 left-0 z-1" src="{{ dino.url }}">
+                <img class="z-2" src="https://i.imgur.com/A4Qdy25.png">
+            </div>
+            <!--  dynamic colors for the colours that are not in the style class-->
+            <p class="my-3">
+                {% if dino.colour|lower == 'dark green' %}
+                    Are you sure you want to remove <span class="font-bold" style="color: #006400;"> {{ dino.name }}</span> from your park?
+                {% elif dino.colour|lower == 'dark blue' %}
+                    Are you sure you want to remove <span class="font-bold" style="color: #00008B;">{{ dino.name }}</span> from your park?
+                {% elif dino.colour|lower == 'light grey' %}
+                    Are you sure you want to remove <span class="font-bold" style="color: #D3D3D3;">{{ dino.name }}</span> from your park?
+                {% else %}
+                    Are you sure you want to remove <span class="font-bold" style="color: {{ dino.colour }}">{{ dino.name}}</span> from your park?
+                {% endif %}
+            </p>
+            <!-- Form for confirming deletion -->
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="flex items-center justify-center space-x-10">
+                    <!-- Confirm button -->
+                    <input type="submit" value="Confirm" class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full bg-blue-600 font-bold text-white mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl">
+                    <!-- Cancel button -->
+                    <a class="inline-flex h-12 items-center justify-center px-5 py-2 mt-5 rounded-full font-bold text-white bg-red-600 mx-auto custom--btn border-2 border-white border-opacity-50 shadow-xl" href="{% url 'dinos_detail' dino.id %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

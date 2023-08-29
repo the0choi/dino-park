@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="custom--main h-screen -mt-20 text-shadow">
+    <div class="wrapper border-4 bg-black bg-opacity-5">
+        <!-- Login Form -->
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Username" required class="text-shadow">
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required class="text-shadow">
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <input type="hidden" name="next" value="{{ next }}">
+            <button type="submit" class="flex h-12 items-center justify-center rounded-full bg-red-600 font-bold custom--btn border-2 border-white border-opacity-50 shadow-xl">LOG IN</button>
+            <div class="register-link">
+                <p>Don't have an account? 
+                    <a class="custom--a text-base" href="{% url 'signup' %}">Sign up</a>
+                </p>
+            </div>
+        </form>
+</div>
+</div>
+{% endblock %}
