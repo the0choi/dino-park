@@ -4,6 +4,8 @@
 - [Introduction](#introduction)
 - [Technologies Used](#technologies-used)
 - [Key Features](#key-features)
+- [ER Diagram](#er-diagram)
+- [Screenshots](#screenshots)
 - [Usage](#usage)
 - [Credits](#credits)
 - [Contributors](#contributors)
@@ -51,10 +53,19 @@ Users can sign up, log in, and log out securely to access their personalised Din
 - Website deployed to Heroku
 
 ## ER Diagram
-- To add..
+[ER Diagram](https://i.imgur.com/Q5k8cvo.png)
+
+- Users have a 1:M relationship with field
+- Field has a 1:M relationship with Dino
+- Dino has a M:M relationship with Animation
 
 ## Screenshots
-- To add..
+[1](https://i.imgur.com/mYfGT4Q.png)
+[2](https://i.imgur.com/QJLwDbk.png)
+[3](https://i.imgur.com/y9l1SJa.png)
+[4](https://i.imgur.com/SZxFrjk.png)
+[5](https://i.imgur.com/ye7ibwq.png)
+[6](https://i.imgur.com/m2SQawz.png)
 
 ## Usage
 
@@ -62,7 +73,7 @@ Users can sign up, log in, and log out securely to access their personalised Din
 Users can create an account or log in to access their Dino Park.
 
 **Add Park:**
-Create a park for a selected date to add to your collection. Note: only 1 park can be made for a particular date, and dinos can only be hatched for today's date.
+Create a park for a selected date to add to your collection. Note: dinos can only be hatched for parks made today.
 
 **All Parks:** 
 An overview of all of the user's virtual parks are showcased, displaying the date, total focused time spent each day and a link to each park. Additionally, a simple graph visualisation displays focus time trends over the past 7 parks, helping users track their producitivity over the week.
@@ -77,8 +88,7 @@ Clicking on a dino reveals more information about it. Edit their name, dino colo
 
 - **Dino Sprite Pack**: [Dino Family by DemChing](https://demching.itch.io/dino-family)
 
-- **Fonts**: 
-  - [Broken Console](https://www.cdnfonts.com/broken-console.font)
+- **Fonts**: [Broken Console](https://www.cdnfonts.com/broken-console.font)
 
 ## Contributors
 
