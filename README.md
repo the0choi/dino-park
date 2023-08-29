@@ -14,7 +14,7 @@
 
 Dino Park is a web application that gamifies the popular Pomodoro technique to enhance productivity. Users can create their virtual "Dino Park" by hatching dinosaur eggs during focused work sessions. As the user completes each session, a dino egg hatches, and a new dino is added to their park. The website aims to provide a fun and engaging way to stay focused and track productivity.
 
-**[Visit Dino Park by clicking here!](dino-park-fd91c4eeec11.herokuapp.com/)**
+**[Visit Dino Park by clicking here!](https://dino-park-fd91c4eeec11.herokuapp.com/)**
 
 ## Technologies Used
 
