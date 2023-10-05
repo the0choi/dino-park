@@ -1404,3 +1404,8 @@ select {
   }
 }
 
+@media (max-width: 768px) {
+  .sm-hide {
+    display: none;
+  }
+}
